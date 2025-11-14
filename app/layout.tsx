@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+import { ThemeProvider } from "@/components/theme-provider";
+import { Share_Tech_Mono, Limelight } from "next/font/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -10,6 +11,17 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+// const shareTechMono = Share_Tech_Mono({
+//   weight: "400",
+//   subsets: ["latin"],
+//   variable: "--font-share-tech-mono",
+// });
+
+const limelight = Limelight({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-limelight",
 });
 
 export const metadata: Metadata = {
@@ -25,10 +37,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable}  ${limelight.variable} antialiased`}
       >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {children}
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+// ${shareTechMono.variable}
