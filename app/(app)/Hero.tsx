@@ -49,9 +49,9 @@ function Hero() {
           speed={0.5}
           scrambleChars=".:"
         >
-          <p className="text-zinc-700"><span className="text-indigo-700">Full-Stack Developer </span><br />I passionate about building scalable
+          <p className="text-zinc-700"><span className="text-[#4c41bf]">Full-Stack Developer </span><br />I passionate about building scalable
           applications, exploring AI/ML, and designing cloud-native
-          solutions. I love turning ideas into reality through code.</p>
+          solutions. <br /><span className="text-[#4c41bf]">I love turning ideas into reality through code.</span></p>
           
         </ScrambledText>
       {/* Image */}
@@ -71,10 +71,10 @@ function Hero() {
       </div>
 
       <div className="mt-10 flex gap-4">
-          <Button className="px-6 py-3 text-lg font-semibold  bg-indigo-500 hover:bg-indigo-600 rounded-2xl">
+          <Button className="px-6 py-3 text-lg font-semibold  bg-[#4c41bf] hover:bg-indigo-700 rounded-2xl">
             View Projects
           </Button>
-          <Button variant="default" className="px-6 py-3 text-indigo-700 text-lg font-semibold rounded-2xl bg-indigo-200 hover:bg-indigo-300">
+          <Button variant="default" className="px-6 py-3 text-[#4c41bf] text-lg font-semibold rounded-2xl bg-indigo-200 hover:bg-indigo-300">
             Download Resume
           </Button>
         </div>

@@ -11,7 +11,7 @@ import Contact from "./(app)/Contact";
 
 export default function Home() {
   const NavItems = [
-    { label: "Home", href: "#home" },
+    { label: "Home", href: "#" },
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
@@ -22,10 +22,10 @@ export default function Home() {
       className="
         relative w-full min-h-screen overflow-x-hidden
         text-gray-100 limelight scroll-smooth 
-        flex flex-col items-center
+        flex flex-col items-center 
       "
     >
-      <Background />
+      <Background  />
 
       <header className="w-full flex justify-center z-40 pt-6 mb-20">
         <PillNav items={NavItems} logo="/bolt.svg" />
