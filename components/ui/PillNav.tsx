@@ -15,6 +15,7 @@ export interface PillNavProps {
   activeHref?: string;
   className?: string;
   ease?: string;
+  logobg?: string;
   baseColor?: string;
   pillColor?: string;
   hoveredPillTextColor?: string;
@@ -30,7 +31,8 @@ const PillNav: React.FC<PillNavProps> = ({
   activeHref,
   className = '',
   ease = 'power3.easeOut',
-  baseColor = '#4c51bf',
+  logobg="#FFFFFF",
+  baseColor = '#4c41bf',
   pillColor = '#FFFFFF',
   hoveredPillTextColor = '#ffffff',
   pillTextColor="#000000",
@@ -236,6 +238,7 @@ const PillNav: React.FC<PillNavProps> = ({
   const isRouterLink = (href?: string) => href && !isExternalLink(href);
 
   const cssVars = {
+    ['--logo-bg']:logobg,
     ['--base']: baseColor,
     ['--pill-bg']: pillColor,
     ['--hover-text']: hoveredPillTextColor,
@@ -247,7 +250,7 @@ const PillNav: React.FC<PillNavProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div className="absolute top-[1em] z-[1000] w-full left-0 md:w-auto md:left-auto">
+    <div className="sticky top-[1em] z-[1000] w-full left-0 md:w-auto md:left-auto">
       <nav
         className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
         aria-label="Primary"
@@ -262,11 +265,11 @@ const PillNav: React.FC<PillNavProps> = ({
             ref={el => {
               logoRef.current = el;
             }}
-            className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden"
+            className="rounded-full p-2 inline-flex items-center justify-center overflow-hidden bg-white/60 backdrop-blur-lg border-2 border-indigo-700"
             style={{
               width: 'var(--nav-h)',
               height: 'var(--nav-h)',
-              background: 'var(--base, #000)'
+              background: 'var(--logo-bg,#FFFFFF)'
             }}
           >
             <img src={logo} alt={logoAlt} ref={logoImgRef} className="w-full h-full object-cover block" />

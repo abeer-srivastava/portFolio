@@ -26,7 +26,7 @@ function Hero() {
             speed={1}
             enableShadows
             enableOnHover
-            className="limelight text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold"
+            className="limelight text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
           >
             Hi, I'm Abeer
           </GlitchText>
@@ -55,15 +55,15 @@ function Hero() {
           
         </ScrambledText>
       {/* Image */}
-      <div className="mt-2">
+      <div className="mt-0">
         <Image
           src="/images/me.jpg"
           alt="Abeer Srivastava"
           width={256}
           height={256}
           className="
-            w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 
-            rounded-full shadow-xl border-4 border-white/20 
+            w-48 h-48  sm:w-60 sm:h-60 md:w-72 md:h-72 
+            rounded-full shadow-2xl border-4 border-indigo-700/20 
             object-cover
           "
         />
@@ -71,10 +71,10 @@ function Hero() {
       </div>
 
       <div className="mt-10 flex gap-4">
-          <Button className="px-6 py-3 text-lg font-semibold rounded-xl bg-indigo-500 hover:bg-indigo-600">
+          <Button className="px-6 py-3 text-lg font-semibold  bg-indigo-500 hover:bg-indigo-600 rounded-2xl">
             View Projects
           </Button>
-          <Button variant="default" className="px-6 py-3 text-indigo-700 text-lg font-semibold rounded-xl bg-indigo-200 hover:bg-indigo-300">
+          <Button variant="default" className="px-6 py-3 text-indigo-700 text-lg font-semibold rounded-2xl bg-indigo-200 hover:bg-indigo-300">
             Download Resume
           </Button>
         </div>
