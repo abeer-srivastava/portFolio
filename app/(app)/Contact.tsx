@@ -4,12 +4,12 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 function Contact() {
   return (
-    <section className="limelight z-10 flex flex-col items-center min-h-screen px-6 py-20 bg-inherit text-[#4c41bf] backdrop-blur-sm w-[60%] mt-20 rounded-2xl">
+    <section className="limelight z-10 flex flex-col items-center min-h-screen px-6 py-20 bg-inherit text-[#4c41bf] backdrop-blur-sm w-[60%] mt-20 mb-5 rounded-2xl">
 
       {/* Heading */}
       <div className="flex flex-row justify-center items-baseline">
       <Contact2Icon size={34} className="text-indigo-700 mr-2"/>
-      <h3 className="text-4xl font-semibold text-zinc-700 mb-3">
+      <h3 className="text-4xl font-semibold text-zinc-800 mb-3">
       Get in Touch</h3>
       </div>
       

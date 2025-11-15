@@ -1,4 +1,5 @@
-import { BriefcaseBusiness, BriefcaseBusinessIcon, GraduationCap, User2, User2Icon, UserCircle } from "lucide-react";
+import GlitchText from "@/components/GlitchText";
+import { BriefcaseBusiness } from "lucide-react";
 import { FaGraduationCap, FaUser } from "react-icons/fa6";
 
 
@@ -7,8 +8,10 @@ function About() {
     <section className="limelight z-10 flex flex-col items-center justify-center min-h-screen text-center px-6 bg-inherit text-gray-700 backdrop-blur-sm transition-shadow p-4 w-[60%] h-auto mt-20 rounded-2xl">
      <div className="flex flex-row justify-baseline items-baseline">       
         <FaUser size={30} className="text-[#4c41bf] font-bold mx-1"/>
-        <h3 className="text-zinc-900 text-4xl font-semibold mb-6">
-        About Me</h3>
+        <h3 className="text-zinc-900 text-4xl font-semibold mb-6 my-2">
+        About Me
+        </h3>
+
      </div>
 
       <div className="text-lg bg-inherit rounded-xl p-6 max-w-3xl mx-auto text-gray-700  space-y-6 leading-relaxed backdrop-blur-md transition-shadow ">
@@ -35,7 +38,7 @@ function About() {
 
             {/* Marquee */}
             <div className="marquee w-full">
-              <div className=" marquee-content text-gray-700 font-medium text-lg space-x-10">
+              <div className=" marquee-content text-gray-700 font-medium text-lg space-x-10 ">
                 <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">JavaScript</span>
                 <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">TypeScript</span>
                 <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Python</span>

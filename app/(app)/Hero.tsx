@@ -5,8 +5,15 @@ import { Button } from "@/components/ui/button";
 import GradientText from "../../components/GradientText";
 import GlitchText from "@/components/GlitchText";
 import ScrambledText from "@/components/ScrambledText";
+import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  // const navigate=useNavigate();
+  const router=useRouter();
+  const handleResumeClick=()=>{
+    router.push("/https://drive.google.com/file/d/1hwBwdHzakJ4z1I2bgMA0YFWkDcQuUwH0/view?usp=sharing")
+  }
   return (
     <section className="
       min-h-screen 
@@ -21,7 +28,7 @@ function Hero() {
       <div className="max-w-4xl flex flex-col items-center gap-4">
         
         {/* Main Heading */}
-        <div className="flex flex-col leading-tight mt-20">
+        <div className="flex flex-col leading-tight mt-5">
           <GlitchText
             speed={1}
             enableShadows
@@ -42,13 +49,13 @@ function Hero() {
         </div>
 
         {/* Subtitle */}
-        <ScrambledText
-          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 max-w-3xl"
-          radius={120}
-          duration={1.2}
-          speed={0.5}
-          scrambleChars=".:"
-        >
+      <ScrambledText
+        className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-700 max-w-3xl"
+        radius={120}
+        duration={1.2}
+        speed={0.5}
+        scrambleChars=".:"
+      >
           <p className="text-zinc-700"><span className="text-[#4c41bf]">Full-Stack Developer </span><br />I passionate about building scalable
           applications, exploring AI/ML, and designing cloud-native
           solutions. <br /><span className="text-[#4c41bf]">I love turning ideas into reality through code.</span></p>
@@ -70,13 +77,19 @@ function Hero() {
       </div>
       </div>
 
-      <div className="mt-10 flex gap-4">
-          <Button className="px-6 py-3 text-lg font-semibold  bg-[#4c41bf] hover:bg-indigo-700 rounded-2xl">
+      <div className="mt-10 flex flex-row justify-center gap-15 items-between space-x-3">
+         <div>
+           <Button onClick={() => router.push("/projects")} className="px-6 py-3 text-lg font-semibold  bg-[#4c41bf] hover:bg-indigo-700 rounded-2xl">
             View Projects
           </Button>
-          <Button variant="default" className="px-6 py-3 text-[#4c41bf] text-lg font-semibold rounded-2xl bg-indigo-200 hover:bg-indigo-300">
-            Download Resume
+         </div>
+          {/* https://drive.google.com/file/d/1hwBwdHzakJ4z1I2bgMA0YFWkDcQuUwH0/view?usp=sharing */}
+          <div>
+              <Button onClick={()=>handleResumeClick()} variant="default" className="px-6 py-3 text-[#4c41bf] text-lg font-semibold rounded-2xl bg-indigo-200 hover:bg-indigo-300">
+              Download Resume
           </Button>
+          </div>
+          
         </div>
     </section>
   );

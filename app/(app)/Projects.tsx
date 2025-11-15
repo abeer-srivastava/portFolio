@@ -142,7 +142,7 @@ function Projects() {
 
           <div className="flex justify-center">
             <img
-              src="https://leetcard.jacoblin.cool/_abeer16?theme=dark&font=Fira%20Code&ext=heatmap"
+              src="https://leetcard.jacoblin.cool/_abeer16?theme=light&font=Fira%20Code&ext=heatmap"
               alt="LeetCode Stats"
               className="rounded-xl shadow-lg"
             />

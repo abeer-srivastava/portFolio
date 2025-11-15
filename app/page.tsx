@@ -22,12 +22,11 @@ export default function Home() {
       className="
         relative w-full min-h-screen overflow-x-hidden
         text-gray-100 limelight scroll-smooth 
-        flex flex-col items-center 
+        flex flex-col items-center
       "
     >
       <Background  />
-
-      <header className="w-full flex justify-center z-40 pt-6 mb-20">
+      <header className="w-full flex justify-center z-40 pt-6 h-10 mb-10">
         <PillNav items={NavItems} logo="/bolt.svg" />
       </header>
 
@@ -46,7 +45,6 @@ export default function Home() {
       <section id="contact" className="w-full flex justify-center z-30">
         <Contact />
       </section>
-
       <div className="relative bottom-0 left-0 w-full h-full pointer-events-none z-10">
         <Crowd />
       </div>

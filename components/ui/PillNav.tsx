@@ -250,7 +250,7 @@ const PillNav: React.FC<PillNavProps> = ({
   } as React.CSSProperties;
 
   return (
-    <div className="sticky top-[1em] z-[1000] w-full left-0 md:w-auto md:left-auto">
+    <div className="sticky  top-[1em] z-[1000] w-full left-0 md:w-auto md:left-auto text-2xl">
       <nav
         className={`w-full md:w-max flex items-center justify-between md:justify-start box-border px-4 md:px-0 ${className}`}
         aria-label="Primary"
@@ -276,7 +276,7 @@ const PillNav: React.FC<PillNavProps> = ({
           </Link>
         ) : (
           <a
-            href={items?.[0]?.href || '#'}
+            href={items?.[0]?.href || '/'}
             aria-label="Home"
             onMouseEnter={handleLogoEnter}
             ref={el => {
