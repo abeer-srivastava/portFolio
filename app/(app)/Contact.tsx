@@ -4,16 +4,25 @@ import { FaEnvelope, FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 function Contact() {
   return (
-    <section className="limelight z-10 flex flex-col items-center min-h-screen px-6 py-20 bg-inherit text-[#4c41bf] backdrop-blur-sm w-[60%] mt-20 mb-5 rounded-2xl">
+    <section className="    min-h-screen 
+      w-full md:w-[80%] lg:w-[70%] xl:w-[60%]
+      mx-auto
+      flex flex-col items-center justify-center
+      text-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20
+      bg-inherit text-[#D6E6F2]
+      backdrop-blur-md
+      transition-shadow rounded-4xl border-2 border-[#4c41bf]/20
+      mt-5
+    ">
 
       {/* Heading */}
       <div className="flex flex-row justify-center items-baseline">
-      <Contact2Icon size={34} className="text-indigo-700 mr-2"/>
+      <Contact2Icon size={34} className="text-[#4c41bf] mr-2"/>
       <h3 className="text-4xl font-semibold text-zinc-800 mb-3">
       Get in Touch</h3>
       </div>
       
-      <p className="text-indigo-700 text-lg mb-5">
+      <p className="text-[#4c41bf] text-lg mb-5">
         Whether you want to collaborate, discuss a project, or just say hi — feel free to connect.
       </p>
 
@@ -25,7 +34,7 @@ function Contact() {
           href="mailto:abeersrivastava16@gmail.com"
           className="group flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:scale-105 transition-all shadow-lg backdrop-blur-lg"
         >
-          <FaEnvelope className="text-4xl mb-3 group-hover:text-indigo-400 transition" />
+          <FaEnvelope className=" text-zinc-700 text-4xl mb-3 group-hover:text-indigo-400 transition" />
           <h4 className="text-xl font-semibold text-zinc-700">Email</h4>
           <p className="text-zinc-700 text-sm mt-1">abeersrivastava16@gmail.com</p>
         </a>
@@ -36,7 +45,7 @@ function Contact() {
           target="_blank"
           className="group flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:scale-105 transition-all shadow-lg backdrop-blur-lg"
         >
-          <FaLinkedin className="text-4xl mb-3 group-hover:text-indigo-400 transition" />
+          <FaLinkedin className=" text-zinc-700 text-4xl mb-3 group-hover:text-indigo-400 transition" />
           <h4 className="text-xl font-semibold text-zinc-700">LinkedIn</h4>
           <p className="text-zinc-700 text-sm mt-1">Connect with me</p>
         </a>
@@ -47,7 +56,7 @@ function Contact() {
           target="_blank"
           className="group flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:scale-105 transition-all shadow-lg backdrop-blur-lg"
         >
-          <FaGithub className="text-4xl mb-3 group-hover:text-indigo-400 transition" />
+          <FaGithub className=" text-zinc-700 text-4xl mb-3 group-hover:text-indigo-400 transition" />
           <h4 className="text-xl font-semibold text-zinc-700">GitHub</h4>
           <p className="text-zinc-700 text-sm mt-1">See my work</p>
         </a>
@@ -58,7 +67,7 @@ function Contact() {
           target="_blank"
           className="group flex flex-col items-center justify-center p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:scale-105 transition-all shadow-lg backdrop-blur-lg"
         >
-          <FaXTwitter className="text-4xl mb-3 group-hover:text-indigo-400 transition" />
+          <FaXTwitter className=" text-zinc-700 text-4xl mb-3 group-hover:text-indigo-400 transition" />
           <h4 className="text-xl font-semibold text-zinc-700">Twitter</h4>
           <p className="text-zinc-700 text-sm mt-1">Follow for updates</p>
         </a>
@@ -97,7 +106,7 @@ function Contact() {
           {/* Submit Button */}
           <Button
             type="submit"
-            className="w-full py-3 rounded-lg bg-[#4c41bf] text-black font-semibold hover:bg-indigo-700 transition"
+            className="w-full py-3 rounded-lg bg-[#4c41bf] text-black font-semibold hover:bg-[#4c41bf] transition"
           >
             Send Message
           </Button>

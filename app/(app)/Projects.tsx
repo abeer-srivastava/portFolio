@@ -3,7 +3,16 @@ import { FaGithub, FaCode, FaLaptopCode } from "react-icons/fa6";
 
 function Projects() {
   return (
-    <section className="limelight z-10 flex flex-col items-center justify-center min-h-screen text-center px-6 bg-inherit text-gray-700 backdrop-blur-sm transition-shadow p-4 w-[60%] h-auto mt-20 rounded-2xl">
+    <section className="    min-h-screen 
+      w-full md:w-[80%] lg:w-[70%] xl:w-[60%]
+      mx-auto
+      flex flex-col items-center justify-center
+      text-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20
+      bg-inherit text-[#D6E6F2]
+      backdrop-blur-md
+      transition-shadow rounded-4xl border-2 border-[#4c41bf]/20
+      mt-5
+    ">
 
       {/* Heading */}
       <div className="flex flex-row justify-center items-center mb-8">

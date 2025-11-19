@@ -8,7 +8,11 @@ function Background() {
   <PixelBlast
     variant="square"
     pixelSize={6}
-    color="#2c3e50"
+    color="#B8C1FF"
+    // color="#A5B4FC"
+
+    // color="#2c3e50"
+
     patternScale={5}
     patternDensity={1.5}
     pixelSizeJitter={0.2}

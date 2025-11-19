@@ -1,142 +1,158 @@
-import GlitchText from "@/components/GlitchText";
-import { BriefcaseBusiness } from "lucide-react";
 import { FaGraduationCap, FaUser } from "react-icons/fa6";
-
+import { BriefcaseBusiness } from "lucide-react";
 
 function About() {
   return (
-    <section className="limelight z-10 flex flex-col items-center justify-center min-h-screen text-center px-6 bg-inherit text-gray-700 backdrop-blur-sm transition-shadow p-4 w-[60%] h-auto mt-20 rounded-2xl">
-     <div className="flex flex-row justify-baseline items-baseline">       
-        <FaUser size={30} className="text-[#4c41bf] font-bold mx-1"/>
-        <h3 className="text-zinc-900 text-4xl font-semibold mb-6 my-2">
-        About Me
-        </h3>
+    <section
+      className="
+    min-h-screen 
+      w-full md:w-[80%] lg:w-[70%] xl:w-[60%]
+      mx-auto
+      flex flex-col items-center justify-center
+      text-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20
+      bg-inherit text-[#D6E6F2]
+      backdrop-blur-md
+      transition-shadow  rounded-4xl border-2 border-[#4c41bf]/20
+      mt-5
+      "
+    >
+      {/* Heading */}
+      <div className="flex items-center gap-3 mb-10">
+        <FaUser className="text-[#4c41bf]" size={30} />
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-zinc-900">
+          About Me
+        </h2>
+      </div>
 
-     </div>
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl w-full">
+        
+       {/* LEFT SIDE — Intro + Bio */}
+<div
+  className="
+    bg-white/70 backdrop-blur-xl 
+    p-6 sm:p-8 
+    rounded-3xl shadow-lg border border-gray-200
+    space-y-6
+  "
+>
+  <h3 className="text-2xl font-bold text-zinc-900">Who I Am</h3>
 
-      <div className="text-lg bg-inherit rounded-xl p-6 max-w-3xl mx-auto text-gray-700  space-y-6 leading-relaxed backdrop-blur-md transition-shadow ">
-        {/* Intro */}
-        <p >
-          I'm <b className="text-indigo-800">Abeer Srivastava</b>, a passionate <b className="text-indigo-800">Full-Stack Developer</b> focused on
-          building scalable, real-time, and cloud-native applications. I love turning
-          complex ideas into clean, efficient, and user-focused digital solutions.
-        </p>
+  <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+    I'm <b className="text-[#4c41bf]">Abeer Srivastava</b>, a 
+    <b className="text-[#4c41bf]"> Full-Stack Developer</b> who loves building 
+    scalable, real-time and cloud-native applications that solve meaningful problems.
+  </p>
 
-        {/* What I Do */}
-        <p>
-          I specialize in <b className="text-indigo-800">Full-Stack Development</b>, <b className="text-indigo-800">Cloud Computing</b>, and exploring <b className="text-indigo-800">AI/ML</b> 
-          to build smarter and more efficient products. My experience includes <b className="text-indigo-800">secure backends,
-          intuitive UIs, real-time collaboration features, and AI-powered systems.</b>
-        </p>
+  <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+    My journey into tech started with curiosity—breaking things, fixing them,
+    and wondering *why* they worked in the first place. Over the years, that
+    curiosity turned into a passion for engineering systems that are not just
+    functional, but thoughtful, elegant, and built to last.
+  </p>
 
-        {/* Tech Stack Card */}
-        {/* Tech Stack Marquee Card */}
-<div className="bg-white/70 rounded-xl p-6 shadow-sm">
-  <h4 className="text-xl font-semibold text-zinc-900 mb-4 text-center">
-    Technologies I Work With
-  </h4>
+  <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+    I enjoy working at the intersection of 
+    <b className="text-[#4c41bf]  "> clean architecture</b>,
+    <b className="text-[#4c41bf]"> developer experience</b>, and 
+    <b className="text-[#4c41bf]"> performance</b>.  
+    Whether it’s designing APIs, crafting intuitive UI flows, or optimizing
+    backend services, I love transforming ideas into smooth, reliable 
+    and production-ready systems.
+  </p>
+  <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
+    Beyond code, I value clarity, craftsmanship, and the belief that every product 
+    is a story—one that deserves to be built with intention and impact.
+  </p>
+</div>
 
-            {/* Marquee */}
-            <div className="marquee w-full">
-              <div className=" marquee-content text-gray-700 font-medium text-lg space-x-10 ">
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">JavaScript</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">TypeScript</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Python</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">C++</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">SQL</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">React.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Next.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">TailwindCSS</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Framer Motion</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Node.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Express.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">WebSockets</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">REST APIs</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">MongoDB</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">PostgreSQL</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">MySQL</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">AWS</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Google Cloud</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">IBM Cloud</span>
+        {/* RIGHT SIDE — Tech + Education + Leadership */}
+        <div className="space-y-6">
 
-                {/* Duplicate for infinite looping */}
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">JavaScript</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">TypeScript</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Python</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">C++</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">SQL</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">React.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Next.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">TailwindCSS</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Framer Motion</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Node.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Express.js</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">WebSockets</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">REST APIs</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">MongoDB</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">PostgreSQL</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">MySQL</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">AWS</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">Google Cloud</span>
-                <span className="px-4 py-1 rounded-md bg-linear-to-r from-indigo-500/20 to-indigo-500/30  text-indigo-900 shadow-md">IBM Cloud</span>
-              </div>
+          {/* Tech Stack */}
+          <div className="
+            bg-white/70 backdrop-blur-xl 
+            p-6 sm:p-8 
+            rounded-3xl shadow-lg border border-gray-200
+          ">
+            <h3 className="text-xl font-semibold text-zinc-900 mb-4">
+              Technologies I Work With
+            </h3>
+
+            <div className="flex flex-wrap gap-2">
+              {[
+                "JavaScript", "TypeScript", "Python", "C++",
+                "React.js", "Next.js", "Tailwind", "Node.js",
+                "Express.js", "MongoDB", "PostgreSQL", "MySQL",
+                "AWS", "GCP", "WebSockets"
+              ].map((tech) => (
+                <span
+                  key={tech}
+                  className="
+                    px-3 py-1.5 text-sm font-medium 
+                    rounded-lg 
+                    bg-gradient-to-r from-indigo-500/10 to-indigo-600/10
+                    text-indigo-900 
+                    shadow-sm border border-indigo-200/30
+                  "
+                >
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
 
+          {/* Education */}
+          <div className="
+            bg-white/70 backdrop-blur-xl 
+            p-6 sm:p-7 
+            rounded-3xl shadow-lg border border-gray-200
+          ">
+            <div className="flex items-center gap-3 mb-3">
+              <FaGraduationCap className="text-[#4c41bf]" size={26} />
+              <h3 className="text-xl font-semibold text-zinc-900">Education</h3>
+            </div>
 
-        {/* Education Card */}
-        {/* Education + Experience Section */}
-<div className="w-full mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <p className="font-semibold text-base sm:text-lg text-zinc-900">
+              B.Tech – Computer Science & Engineering
+            </p>
 
-  {/* Education Card */}
-    <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
-      <h4 className="text-2xl font-semibold text-zinc-900 mb-3 flex items-center gap-2">
-        <FaGraduationCap size={35} className="text-[#4c41bf] " /> Education
-      </h4>
+            <p className="text-gray-900 text-sm sm:text-base mt-1">
+              Shri Ramswaroop Memorial College of Engineering & Management  
+            </p>
 
-      <div className="space-y-1 text-gray-700">
-        <p className="font-semibold text-lg">
-          B.Tech – Computer Science & Engineering
-        </p>
-        <p className="text-gray-600 text-sm">
-          Shri Ramswaroop Memorial College of Engineering & Management  
-          <span className="block text-gray-500 text-xs">(2022 – Present)</span>
-        </p>
-        <p className="text-gray-500 text-sm mt-2">
-          GPA: <span className="font-semibold text-indigo-700">8.6 / 10.0</span>
-        </p>
+            <p className="text-gray-500 text-sm mt-1">
+              2022 – Present • GPA: <span className="text-indigo-700 font-semibold">8.6 / 10</span>
+            </p>
+          </div>
+
+          {/* Leadership */}
+          <div className="
+            bg-white/70 backdrop-blur-xl 
+            p-6 sm:p-7 
+            rounded-3xl shadow-lg border border-gray-200
+          ">
+            <div className="flex items-center gap-3 mb-3">
+              <BriefcaseBusiness className="text-[#4c41bf]" size={26} />
+              <h3 className="text-xl font-semibold text-zinc-900">Leadership</h3>
+            </div>
+
+            <p className="font-semibold text-base sm:text-lg text-zinc-900">
+              Technical Member – CSI SRMCEM
+            </p>
+
+            <ul className="list-disc list-inside text-gray-700 text-sm sm:text-base mt-3 space-y-1">
+              <li>Organized & assisted in <b className="text-indigo-700">5+ workshops</b></li>
+              <li>Built MERN event platform for registrations</li>
+              <li>Helped <b className="text-indigo-700">200+ students</b> with sessions</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
 
-    {/* Experience Card */}
-    <div className="bg-white/70 backdrop-blur-xl rounded-2xl p-6 border border-gray-200 shadow-md hover:shadow-lg transition-shadow">
-      <h4 className="text-2xl font-semibold text-zinc-900 mb-3 flex flex-1 flex-row justify-baseline items-center gap-2">
-        <BriefcaseBusiness  strokeWidth={3} size={34} className="text-[#4c41bf]"/> Leadership
-      </h4>
-
-      <div className="space-y-1 text-gray-700">
-        <p className="font-semibold text-lg">
-          Technical Member – Computer Society of India (CSI) SRMCEM
-        </p>
-
-        <p className="text-gray-600 text-sm leading-relaxed">
-          <ul>
-          <li>Conducted and assisted in <span className="font-semibold text-indigo-800">5+ technical workshops</span>.</li>  
-          <li>Built a MERN-based event registration platform.</li>  
-          <li>Impacted <span className="font-semibold text-indigo-700">200+ students</span> through hands-on sessions.</li>
-          </ul>
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-
-        {/* Closing Line */}
-        <p className="text-[#4c41bf] text-lg">
-          I love solving problems that matter and crafting systems that feel effortless — even when the engineering behind them isn’t.
-        </p>
-      </div>
+      <p className="mt-10 text-center text-[#4c41bf] font-medium text-base sm:text-lg">
+        I love building systems that feel effortless — even when the engineering isn’t.
+      </p>
     </section>
   );
 }
