@@ -92,7 +92,7 @@ function Hero() {
             px-6 py-3 
             text-base sm:text-lg 
             font-semibold 
-            bg-[#4c41bf] hover:bg-indigo-700 
+            bg-indigo-200 hover:bg-indigo-300 
             rounded-2xl
             transition-all
             h-full
