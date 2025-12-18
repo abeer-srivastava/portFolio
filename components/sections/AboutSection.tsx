@@ -62,7 +62,7 @@ const AboutSection: React.FC = () => {
           {/* Stats & Quick Facts */}
           <div className="space-y-6">
             {/* Stats Callout */}
-            <BrutalCard bgColor="lime" rotate={1} hover={false}>
+            <BrutalCard bgColor="lime" rotate={1} hover={true}>
               <h3 className="font-bold text-xl uppercase mb-4">Quick Stats</h3>
               <div className="space-y-3 font-jetbrains-mono">
                 <div className="flex justify-between items-center border-b-2 border-brutal-black pb-2">
@@ -85,23 +85,23 @@ const AboutSection: React.FC = () => {
             </BrutalCard>
 
             {/* Focus Areas */}
-            <BrutalCard bgColor="white" rotate={-1.5} hover={false}>
+            <BrutalCard bgColor="white" rotate={-1.5} hover={true}>
               <h3 className="font-bold text-lg uppercase mb-4">Focus Areas</h3>
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brutal-black flex-shrink-0 mt-1" />
+                  <div className="w-6 h-6 bg-brutal-black shrink-0 mt-1" />
                   <span className="font-bold text-sm">Cloud-native architectures</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brutal-black flex-shrink-0 mt-1" />
+                  <div className="w-6 h-6 bg-brutal-black shrink-0 mt-1" />
                   <span className="font-bold text-sm">AI/ML integration</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brutal-black flex-shrink-0 mt-1" />
+                  <div className="w-6 h-6 bg-brutal-black shrink-0 mt-1" />
                   <span className="font-bold text-sm">System design & performance</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 bg-brutal-black flex-shrink-0 mt-1" />
+                  <div className="w-6 h-6 bg-brutal-black shrink-0 mt-1" />
                   <span className="font-bold text-sm">Full-stack TypeScript</span>
                 </div>
               </div>

@@ -78,7 +78,7 @@ const SkillsSection: React.FC = () => {
 
         {/* Additional Tools & Technologies */}
         <div className="mt-12">
-          <BrutalCard bgColor="gray" rotate={0} hover={false}>
+          <BrutalCard bgColor="gray" rotate={0} hover={true}>
             <h3 className="font-bold text-xl uppercase mb-4">Tools & Technologies</h3>
             <div className="flex flex-wrap gap-3">
               {[
@@ -95,7 +95,7 @@ const SkillsSection: React.FC = () => {
               ].map((tool) => (
                 <div
                   key={tool}
-                  className="px-3 py-2 bg-brutal-white border-2 border-brutal-black font-bold text-sm uppercase hover:-translate-y-1 transition-transform duration-brutal"
+                  className="px-3 py-2 bg-brutal-white border-2 border-brutal-black font-bold text-sm uppercase hover:-translate-y-1 transition-transform duration-brutal hover:bg-brutal-lime"
                 >
                   {tool}
                 </div>

@@ -8,6 +8,7 @@ const certifications = [
   { name: 'IBM Data Science', provider: 'IBM', color: 'blue' as const },
   { name: 'IBM Cloud', provider: 'IBM', color: 'blue' as const },
   { name: 'Google Cloud', provider: 'Google', color: 'white' as const },
+  { name: 'Big Data Foundation', provider: 'IBM', color: 'pink' as const },
 ];
 
 const CertificationsSection: React.FC = () => {

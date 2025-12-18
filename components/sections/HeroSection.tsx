@@ -1,5 +1,6 @@
 import React from "react";
 import BrutalButton from "../brutal/BrutalButton";
+import Image from "next/image";
 const HeroSection: React.FC = () => {
   return (
     <section
@@ -12,7 +13,7 @@ const HeroSection: React.FC = () => {
         <div className="absolute top-20 left-10 w-32 h-32 bg-brutal-lime border-4 border-brutal-black rotate-12" />
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-brutal-pink border-4 border-brutal-black -rotate-6" />
         <div className="absolute top-1/2 right-1/4 w-24 h-24 bg-brutal-blue border-4 border-brutal-black rotate-45" />
-        <div className="absolute bottom-24 left-80 w-20 h-20 bg-brutal-lime border-4 border-brutal-black -rotate-12" />
+        <div className="absolute bottom-24 left-88 w-20 h-20 bg-brutal-lime border-4 border-brutal-black -rotate-12" />
         <div className="absolute top-120 left-80 w-10 h-16 bg-brutal-pink border-4 border-brutal-black rotate-12" />
        
         <div className="absolute bottom-80 left-15 w-24 h-24 bg-brutal-pink border-4 border-brutal-black rotate-12" />
@@ -33,7 +34,7 @@ const HeroSection: React.FC = () => {
               <h1 className="font-space-grotesk font-bold uppercase leading-none">
                 {" "}
                 HI, I&apos;M <br />{" "}
-                <span className="text-brutal-lime">ABEER</span> <br />{" "}
+                <span className="text-brutal-blue">ABEER</span> <br />{" "}
                 <span className="text-brutal-pink">SRIVASTAVA</span>{" "}
               </h1>{" "}
             </div>{" "}
@@ -77,7 +78,7 @@ const HeroSection: React.FC = () => {
                   />{" "}
                 </svg>{" "}
               </div>{" "}
-              <span className="font-bold uppercase text-sm">
+              <span className="font-bold uppercase text-sm mx-2 ">
                 Scroll to explore
               </span>{" "}
             </div>{" "}
@@ -94,8 +95,8 @@ const HeroSection: React.FC = () => {
                 {/* Placeholder for actual image */}{" "}
                 <div className="absolute inset-0 flex items-center justify-center">
                   {" "}
-                  <span className="font-jetbrains-mono font-bold text-4xl md:text-6xl text-brutal-black">
-                    AS
+                  <span className="font-jetbrains-mono content-center font-bold text-4xl md:text-6xl text-brutal-black">
+                    <Image src="/images/me.jpg" alt="Abeer Srivastava" width={400} height={200} className="mx-auto my-auto "/>
                   </span>{" "}
                 </div>{" "}
               </div>{" "}

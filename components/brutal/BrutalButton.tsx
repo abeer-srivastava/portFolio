@@ -32,7 +32,7 @@ const BrutalButton: React.FC<BrutalButtonProps> = ({
   `;
 
   const variantStyles = {
-    primary: 'bg-brutal-lime text-brutal-black shadow-brutal hover:shadow-brutal-hover',
+    primary: 'bg-brutal-blue text-brutal-black shadow-brutal hover:shadow-brutal-hover',
     secondary: 'bg-brutal-white text-brutal-black shadow-brutal hover:shadow-brutal-hover',
     danger: 'bg-brutal-pink text-brutal-white shadow-brutal hover:shadow-brutal-hover',
   };
