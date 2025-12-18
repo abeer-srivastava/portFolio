@@ -20,7 +20,7 @@ const contactLinks = [
   },
   {
     label: '📄 RESUME',
-    href: '/resume.pdf',
+    href: 'https://drive.google.com/file/d/1hwBwdHzakJ4z1I2bgMA0YFWkDcQuUwH0/view?usp=sharing',
     variant: 'danger' as const,
   },
 ];
