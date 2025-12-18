@@ -1,0 +1,62 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+    content: [
+        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        extend: {
+            colors: {
+                brutal: {
+                    black: "#000000",
+                    white: "#FFFFFF",
+                    lime: "#CCFF00",
+                    pink: "#FF006E",
+                    blue: "#00F0FF",
+                    gray: "#E5E5E5",
+                    "gray-dark": "#333333",
+                },
+            },
+            fontFamily: {
+                "space-grotesk": ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
+                "jetbrains-mono": ["var(--font-jetbrains-mono)", "Courier New", "monospace"],
+            },
+            borderWidth: {
+                3: "3px",
+                4: "4px",
+                5: "5px",
+            },
+            boxShadow: {
+                brutal: "8px 8px 0px rgba(0, 0, 0, 1)",
+                "brutal-sm": "4px 4px 0px rgba(0, 0, 0, 1)",
+                "brutal-lg": "12px 12px 0px rgba(0, 0, 0, 1)",
+                "brutal-hover": "12px 12px 0px rgba(0, 0, 0, 1)",
+                "brutal-lime": "8px 8px 0px #CCFF00",
+                "brutal-pink": "8px 8px 0px #FF006E",
+                "brutal-blue": "8px 8px 0px #00F0FF",
+            },
+            borderRadius: {
+                brutal: "2px",
+                none: "0px",
+            },
+            transitionDuration: {
+                brutal: "150ms",
+                "brutal-medium": "200ms",
+                "brutal-slow": "250ms",
+            },
+            transitionTimingFunction: {
+                brutal: "linear",
+            },
+            spacing: {
+                brutal: "1.5rem",
+                "brutal-sm": "1rem",
+                "brutal-lg": "2.5rem",
+            },
+        },
+    },
+    plugins: [],
+};
+
+export default config;
