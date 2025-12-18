@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
               {" "}
               <p className="text-brutal-white text-lg md:text-xl font-bold leading-relaxed">
                 {" "}
-                Full-Stack Developer building scalable, AI-powered products{" "}
+                <span className="text-brutal-pink">Full-Stack Developer building scalable</span>,<span className="text-brutal-lime"> AI-powered products</span>{" "}
               </p>{" "}
             </div>{" "}
             {/* CTAs */}{" "}
