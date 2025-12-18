@@ -23,13 +23,14 @@ const HeroSection: React.FC = () => {
       </div>
       <div className="max-w-6xl mx-auto relative z-10">
         {" "}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           {" "}
           {/* Left Side - Text Content */}{" "}
           <div className="space-y-8">
             {" "}
             {/* Name */}{" "}
-            <div className="border-5 border-brutal-black bg-brutal-white p-6 shadow-brutal">
+            <div className="border-5 border-brutal-black bg-brutal-white p-6
+             shadow-brutal hover:rotate-[1.5deg]  hover:-translate-x-1 hover:-translate-y-1 transition-transform duration-300 ease-in-out relative">
               {" "}
               <h1 className="font-space-grotesk font-bold uppercase leading-none">
                 {" "}
@@ -39,7 +40,7 @@ const HeroSection: React.FC = () => {
               </h1>{" "}
             </div>{" "}
             {/* Tagline */}{" "}
-            <div className="border-4 border-brutal-black bg-brutal-black p-6 shadow-brutal-sm -rotate-1">
+            <div className="border-4 border-brutal-black bg-brutal-black p-6 shadow-brutal-sm -rotate-1 hover:-rotate-1 hover:-translate-x-1 hover:-translate-y-1 transition-transform duration-300 ease-in-out relative">
               {" "}
               <p className="text-brutal-white text-lg md:text-xl font-bold leading-relaxed">
                 {" "}
@@ -89,9 +90,9 @@ const HeroSection: React.FC = () => {
             <div className="relative">
               {" "}
               {/* Main Image Container */}{" "}
-              <div className="border-5 border-brutal-black shadow-brutal-lg rotate-2 bg-brutal-gray overflow-hidden w-64 h-64 md:w-80 md:h-80">
+              <div className="border-5 border-brutal-black shadow-brutal-lg rotate-2 bg-brutal-black overflow-hidden w-64 h-64 md:w-90 md:h-90 hover:rotate-0 transition-transform duration-300 ease-in-out relative">
                 {" "}
-                <div className="w-full h-full bg-gradient-to-br from-brutal-lime via-brutal-blue to-brutal-pink opacity-20" />{" "}
+                <div className="w-full h-full bg-linear-to-br from-brutal-lime via-brutal-blue to-brutal-pink opacity-20" />{" "}
                 {/* Placeholder for actual image */}{" "}
                 <div className="absolute inset-0 flex items-center justify-center">
                   {" "}
