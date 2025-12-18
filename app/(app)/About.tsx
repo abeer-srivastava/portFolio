@@ -39,7 +39,7 @@ function About() {
   <h3 className="text-2xl font-bold text-zinc-900">Who I Am</h3>
 
   <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
-    I'm <b className="text-[#4c41bf]">Abeer Srivastava</b>, a 
+    I&apos;m <b className="text-[#4c41bf]">Abeer Srivastava</b>, a 
     <b className="text-[#4c41bf]"> Full-Stack Developer</b> who loves building 
     scalable, real-time and cloud-native applications that solve meaningful problems.
   </p>

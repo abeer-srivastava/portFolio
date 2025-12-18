@@ -3,12 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 
-interface NavItem {
-  label: string;
-  href: string;
-}
-
-const navItems: NavItem[] = [
+const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
@@ -16,33 +11,58 @@ const navItems: NavItem[] = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const BrutalNav: React.FC = () => {
+const BrutalNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-brutal-black border-b-5 border-brutal-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+    <nav className="fixed md:fixed  top-4 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-7xl bg-white/70 backdrop-blur-sm border border-black/20 rounded-lg shadow-lg">
+      <div
+        className="
+          bg-brutal-yellow
+          border-4 border-brutal-black
+          shadow-[6px_6px_0_0_#000]
+          px-4 md:px-6
+        "
+      >
+        <div className="flex h-16 md:h-20 items-center justify-between">
+
           {/* Logo */}
-          <Link 
-            href="#home" 
-            className="text-brutal-white font-bold text-xl md:text-2xl uppercase tracking-tight hover:text-brutal-lime transition-colors duration-brutal"
+          <Link
+            href="#home"
+            className="
+              bg-brutal-black text-brutal-yellow
+              px-3 py-2
+              font-extrabold uppercase tracking-tight
+              text-sm md:text-base
+              border-3 border-brutal-black
+              shadow-[3px_3px_0_0_#000]
+              transition-all duration-150
+              text-white
+            "
           >
-            ABEER.DEV
+            imAbeer.dev
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="
+                  relative
                   px-4 py-2
-                  text-brutal-white font-bold uppercase text-sm
-                  hover:bg-brutal-lime hover:text-brutal-black
-                  border-2 border-transparent hover:border-brutal-white
-                  transition-all duration-brutal
+                  font-bold uppercase text-sm
+                  text-brutal-black
+                  border-3 border-brutal-black
+                  bg-brutal-white
+                  shadow-[3px_3px_0_0_#000]
+                  hover:bg-brutal-lime
+                  hover:-translate-x-[2px] hover:-translate-y-[2px]
+                  hover:shadow-[5px_5px_0_0_#000]
+                  active:translate-x-[1px] active:translate-y-[1px]
+                  active:shadow-[1px_1px_0_0_#000]
+                  transition-all duration-150
                 "
               >
                 {item.label}
@@ -50,32 +70,32 @@ const BrutalNav: React.FC = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-brutal-white p-2 border-3 border-brutal-white hover:bg-brutal-lime hover:text-brutal-black transition-all duration-brutal"
+            className="
+              md:hidden
+              bg-brutal-white
+              border-3 border-brutal-black
+              p-2
+              shadow-[3px_3px_0_0_#000]
+              hover:bg-brutal-lime
+              hover:-translate-x-[2px] hover:-translate-y-[2px]
+              hover:shadow-[5px_5px_0_0_#000]
+              transition-all duration-150
+            "
             aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6"
+              className="w-6 h-6 text-brutal-black"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
               {isOpen ? (
-                <path
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
-                  strokeWidth={3}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeWidth="3" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="square"
-                  strokeLinejoin="miter"
-                  strokeWidth={3}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeWidth="3" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -83,18 +103,22 @@ const BrutalNav: React.FC = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden border-t-3 border-brutal-white py-4">
+          <div className="md:hidden mt-4 pb-4 flex flex-col gap-3">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className="
-                  block px-4 py-3
-                  text-brutal-white font-bold uppercase text-sm
-                  hover:bg-brutal-lime hover:text-brutal-black
-                  border-b-2 border-brutal-white/20
-                  transition-all duration-brutal
+                  bg-brutal-white
+                  border-3 border-brutal-black
+                  px-4 py-3
+                  font-bold uppercase text-sm
+                  shadow-[3px_3px_0_0_#000]
+                  hover:bg-brutal-lime
+                  hover:-translate-x-[2px] hover:-translate-y-[2px]
+                  hover:shadow-[5px_5px_0_0_#000]
+                  transition-all duration-150
                 "
               >
                 {item.label}
