@@ -5,7 +5,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-brutal-white pt-20 md:pt-24 px-4 md:px-6 lg:px-8 relative overflow-hidden"
+       className="min-h-screen flex items-center justify-center bg-brutal-white pt-26 md:pt-28 px-4 md:px-8 lg:px-8 relative overflow-hidden"
     >
       {" "}
       {/* Geometric Background Elements */}{" "}
