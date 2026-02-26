@@ -1,6 +1,8 @@
 import React from 'react';
 import BrutalSection from '../brutal/BrutalSection';
 import BrutalCard from '../brutal/BrutalCard';
+import Sticker from '../brutal/Sticker';
+import { Award, ShieldCheck, BadgeCheck } from 'lucide-react';
 
 const certifications = [
   { name: 'Oracle OCI 2025 AI', provider: 'Oracle', color: 'green' as const },
@@ -13,7 +15,16 @@ const certifications = [
 
 const CertificationsSection: React.FC = () => {
   return (
-    <BrutalSection id="certifications" bgColor="white">
+    <BrutalSection id="certifications" bgColor="white" className="relative overflow-hidden">
+      <Sticker className="top-20 left-[5%]" rotate={-12} color="bg-brutal-pink">
+        <Award size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="bottom-40 right-[2%]" rotate={15} color="bg-brutal-green">
+        <ShieldCheck size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="top-1/2 right-[5%]" rotate={-8} color="bg-brutal-blue">
+        <BadgeCheck size={24} strokeWidth={3} />
+      </Sticker>
       <div className="space-y-12">
         {/* Section Header */}
         <div className="border-5 border-brutal-black bg-brutal-blue p-4 inline-block">

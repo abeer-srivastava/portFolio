@@ -2,6 +2,8 @@ import React from 'react';
 import BrutalSection from '../brutal/BrutalSection';
 import BrutalCard from '../brutal/BrutalCard';
 import BrutalTerminal from '../brutal/BrutalTerminal';
+import Sticker from '../brutal/Sticker';
+import { Coffee, GraduationCap, Lightbulb, Trophy } from 'lucide-react';
 
 interface SkillCategory {
   title: string;
@@ -34,7 +36,19 @@ const skillCategories: SkillCategory[] = [
 
 const SkillsSection: React.FC = () => {
   return (
-    <BrutalSection id="skills" bgColor="white">
+    <BrutalSection id="skills" bgColor="white" className="relative overflow-hidden">
+      <Sticker className="bottom-20 left-[5%]" rotate={12} color="bg-brutal-yellow">
+        <GraduationCap size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="top-40 right-[2%]" rotate={-15} color="bg-brutal-blue">
+        <Trophy size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="bottom-1/2 left-[2%]" rotate={8} color="bg-brutal-pink">
+        <Lightbulb size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="top-[70%] right-[10%]" rotate={-5} color="bg-brutal-green">
+        <Coffee size={24} strokeWidth={3} />
+      </Sticker>
       <div className="space-y-12">
         {/* Section Header */}
         <div className="border-5 border-brutal-black bg-brutal-green p-4 inline-block">

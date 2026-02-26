@@ -3,6 +3,8 @@ import BrutalSection from '../brutal/BrutalSection';
 import BrutalCard from '../brutal/BrutalCard';
 import BrutalButton from '../brutal/BrutalButton';
 import BrutalBadge from '../brutal/BrutalBadge';
+import Sticker from '../brutal/Sticker';
+import { Rocket, ExternalLink, Github, Sparkles } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -89,7 +91,19 @@ const projects: Project[] = [
 
 const ProjectsSection: React.FC = () => {
   return (
-    <BrutalSection id="projects" bgColor="gray">
+    <BrutalSection id="projects" bgColor="gray" className="relative overflow-hidden">
+      <Sticker className="top-20 right-[2%]" rotate={-10} color="bg-brutal-white">
+        <Rocket size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="bottom-40 left-[1%]" rotate={15} color="bg-brutal-green">
+        <ExternalLink size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="top-1/2 left-[2%]" rotate={-8} color="bg-brutal-pink">
+        <Github size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="bottom-[15%] right-[5%]" rotate={12} color="bg-brutal-blue">
+        <Sparkles size={24} strokeWidth={3} />
+      </Sticker>
       <div className="space-y-12">
         {/* Section Header */}
         <div className="border-5 border-brutal-black bg-brutal-pink p-4 inline-block">

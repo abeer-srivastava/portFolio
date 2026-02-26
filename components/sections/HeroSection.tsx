@@ -2,21 +2,13 @@ import React from "react";
 import BrutalButton from "../brutal/BrutalButton";
 import Image from "next/image";
 import { Terminal, Code, Cpu, Database, Layout, Smartphone } from "lucide-react";
-
-const Sticker = ({ children, className, rotate = 0, color = 'bg-brutal-white' }: { children: React.ReactNode, className: string, rotate?: number, color?: string }) => (
-  <div 
-    className={`absolute border-3 border-brutal-black shadow-[4px_4px_0_0_#000] p-3 ${color} ${className} flex items-center justify-center transition-transform hover:scale-110 cursor-default`}
-    style={{ transform: `rotate(${rotate}deg)` }}
-  >
-    {children}
-  </div>
-);
+import Sticker from "../brutal/Sticker";
 
 const HeroSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-brutal-yellow pt-26 md:pt-28 px-4 md:px-8 lg:px-8 relative overflow-hidden"
+      className="min-h-fit md:min-h-screen flex items-start md:items-center justify-center bg-brutal-yellow pt-32 pb-24 md:pt-28 md:pb-0 px-4 md:px-8 lg:px-8 relative overflow-hidden "
     >
       {/* Background Stickers */}
       <div className="absolute inset-0 pointer-events-none">
@@ -45,7 +37,7 @@ const HeroSection: React.FC = () => {
           {/* Left Side - Text Content */}
           <div className="space-y-8">
             <div className="border-5 border-brutal-black bg-brutal-white p-6 shadow-brutal hover:rotate-[1deg] transition-transform duration-300 ease-in-out relative">
-              <h1 className="font-space-grotesk font-extrabold uppercase leading-none text-4xl md:text-6xl lg:text-7xl">
+              <h1 className="font-space-grotesk font-extrabold uppercase leading-none text-2xl md:text-6xl lg:text-7xl">
                 HI, I&apos;M <br />
                 <span className="bg-brutal-pink px-2 border-3 border-brutal-black inline-block my-2">ABEER</span> <br />
                 <span className="text-brutal-blue">SRIVASTAVA</span>
@@ -89,9 +81,9 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Side - Profile Image */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end mt-10 lg:mt-0">
             <div className="relative">
-              <div className="border-5 border-brutal-black shadow-brutal-lg rotate-3 bg-brutal-black overflow-hidden w-64 h-64 md:w-96 md:h-96 hover:rotate-0 transition-transform duration-300 ease-in-out relative">
+              <div className="border-5 border-brutal-black shadow-brutal-lg rotate-3 bg-brutal-black overflow-hidden w-56 h-56 md:w-96 md:h-96 hover:rotate-0 transition-transform duration-300 ease-in-out relative">
                 <div className="absolute inset-0 bg-brutal-blue opacity-10 z-10 pointer-events-none" />
                 <Image
                   src="/images/me.jpg"

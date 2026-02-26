@@ -2,15 +2,7 @@ import React from 'react';
 import BrutalSection from '../brutal/BrutalSection';
 import BrutalCard from '../brutal/BrutalCard';
 import { Coffee, GraduationCap, Trophy, Lightbulb } from 'lucide-react';
-
-const Sticker = ({ children, className, rotate = 0, color = 'bg-brutal-white' }: { children: React.ReactNode, className: string, rotate?: number, color?: string }) => (
-  <div 
-    className={`absolute border-3 border-brutal-black shadow-[4px_4px_0_0_#000] p-3 ${color} ${className} flex items-center justify-center transition-transform hover:scale-110 cursor-default hidden lg:flex z-10`}
-    style={{ transform: `rotate(${rotate}deg)` }}
-  >
-    {children}
-  </div>
-);
+import Sticker from '../brutal/Sticker';
 
 const AboutSection: React.FC = () => {
   return (
