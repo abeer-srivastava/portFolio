@@ -3,7 +3,7 @@ import BrutalSection from '../brutal/BrutalSection';
 import BrutalCard from '../brutal/BrutalCard';
 
 const certifications = [
-  { name: 'Oracle OCI 2025 AI', provider: 'Oracle', color: 'lime' as const },
+  { name: 'Oracle OCI 2025 AI', provider: 'Oracle', color: 'green' as const },
   { name: 'Tata Cybersecurity', provider: 'Tata', color: 'pink' as const },
   { name: 'IBM Data Science', provider: 'IBM', color: 'blue' as const },
   { name: 'IBM Cloud', provider: 'IBM', color: 'blue' as const },

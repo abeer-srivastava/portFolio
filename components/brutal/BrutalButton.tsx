@@ -28,7 +28,7 @@ const BrutalButton: React.FC<BrutalButtonProps> = ({
     hover:-translate-x-1 hover:-translate-y-1
     active:translate-x-0 active:translate-y-0
     active:shadow-brutal-sm
-    focus-visible:outline-4 focus-visible:outline-brutal-lime focus-visible:outline-offset-4
+    focus-visible:outline-4 focus-visible:outline-brutal-green focus-visible:outline-offset-4
   `;
 
   const variantStyles = {

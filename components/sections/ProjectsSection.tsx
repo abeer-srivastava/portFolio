@@ -116,7 +116,7 @@ const ProjectsSection: React.FC = () => {
                   className={`
                     self-start md:self-auto
                     px-3 py-1 border-2 border-brutal-black font-bold text-xs uppercase whitespace-nowrap
-                    ${project.status === 'live' ? 'bg-brutal-lime' : 'bg-brutal-gray'}
+                    ${project.status === 'live' ? 'bg-brutal-green' : 'bg-brutal-gray'}
                   `}
                 >
                   {project.status === 'live' ? '🟢 LIVE' : '🟡 SOON'}
@@ -164,7 +164,7 @@ const ProjectsSection: React.FC = () => {
 
         {/* Call to Action */}
         <div className="mt-12 text-center">
-          <BrutalCard bgColor="lime" rotate={0} hover={false}>
+          <BrutalCard bgColor="green" rotate={0} hover={false}>
             <p className="font-bold text-lg md:text-xl uppercase">
               More projects coming soon. Follow my journey on{' '}
               <a

@@ -4,7 +4,7 @@ interface BrutalCardProps {
   children: React.ReactNode;
   className?: string;
   rotate?: number; // Rotation in degrees (-2 to 2)
-  bgColor?: 'white' | 'lime' | 'pink' | 'blue' | 'gray';
+  bgColor?: 'white' | 'yellow' | 'green' | 'pink' | 'blue' | 'gray';
   hover?: boolean; // Enable hover lift effect
 }
 
@@ -17,7 +17,8 @@ const BrutalCard: React.FC<BrutalCardProps> = ({
 }) => {
   const bgColors = {
     white: 'bg-brutal-white',
-    lime: 'bg-brutal-lime',
+    yellow: 'bg-brutal-yellow',
+    green: 'bg-brutal-green',
     pink: 'bg-brutal-pink',
     blue: 'bg-brutal-blue',
     gray: 'bg-brutal-gray',

@@ -1,11 +1,12 @@
 import React from 'react';
 import BrutalSection from '../brutal/BrutalSection';
 import BrutalCard from '../brutal/BrutalCard';
+import BrutalTerminal from '../brutal/BrutalTerminal';
 
 interface SkillCategory {
   title: string;
   skills: string[];
-  bgColor: 'lime' | 'blue' | 'pink' | 'white';
+  bgColor: 'green' | 'blue' | 'pink' | 'white';
 }
 
 const skillCategories: SkillCategory[] = [
@@ -17,7 +18,7 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'FRONTEND',
     skills: ['React.js', 'Next.js', 'TailwindCSS', 'Framer Motion'],
-    bgColor: 'lime',
+    bgColor: 'green',
   },
   {
     title: 'BACKEND',
@@ -36,7 +37,7 @@ const SkillsSection: React.FC = () => {
     <BrutalSection id="skills" bgColor="white">
       <div className="space-y-12">
         {/* Section Header */}
-        <div className="border-5 border-brutal-black bg-brutal-lime p-4 inline-block">
+        <div className="border-5 border-brutal-black bg-brutal-green p-4 inline-block">
           <h2 className="text-brutal-black font-space-grotesk font-bold uppercase">
             Technical Skills
           </h2>
@@ -76,32 +77,53 @@ const SkillsSection: React.FC = () => {
           })}
         </div>
 
-        {/* Additional Tools & Technologies */}
-        <div className="mt-12">
-          <BrutalCard bgColor="gray" rotate={0} hover={true}>
-            <h3 className="font-bold text-xl uppercase mb-4">Tools & Technologies</h3>
-            <div className="flex flex-wrap gap-3">
-              {[
-                'Git',
-                'GitHub',
-                'Docker',
-                'Vercel',
-                'Turborepo',
-                'Prisma ORM',
-                'NextAuth',
-                'Zod',
-                'Resend',
-                'Gemini API',
-              ].map((tool) => (
-                <div
-                  key={tool}
-                  className="px-3 py-2 bg-brutal-white border-2 border-brutal-black font-bold text-sm uppercase hover:-translate-y-1 transition-transform duration-brutal hover:bg-brutal-lime"
-                >
-                  {tool}
-                </div>
-              ))}
-            </div>
-          </BrutalCard>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
+          {/* Terminal Section */}
+          <div className="lg:col-span-2">
+            <BrutalTerminal 
+              commands={[
+                { cmd: "whoami", output: "abeer-srivastava (Full-Stack Engineer)" },
+                { cmd: "ls passions/", output: "scalable-systems/ ai-integration/ clean-code/ performance-opt/" },
+                { cmd: "git commit -m 'build the future'", output: "[main 4f2e8a1] 10 files changed, 452 insertions(+)" }
+              ]}
+            />
+          </div>
+
+          {/* Additional Tools & Technologies */}
+          <div className="h-full">
+            <BrutalCard bgColor="gray" rotate={1} hover={true} className="h-full">
+              <h3 className="font-bold text-xl uppercase mb-4">Core Tools</h3>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  'Git',
+                  'Docker',
+                  'Vercel',
+                  'Turborepo',
+                  'Prisma',
+                  'Zod',
+                  'Gemini',
+                  'Github',
+                  'Gitlab',
+                  'Postman',
+                  'Figma',
+                  'Framer Motion',
+                  'TailwindCSS',
+                  'WebSockets',
+                  'REST APIs',
+                  'AWS',
+                  'GCP',
+                  'MySQL',
+                ].map((tool) => (
+                  <div
+                    key={tool}
+                    className="px-3 py-1 bg-brutal-white border-2 border-brutal-black font-bold text-xs uppercase hover:-translate-y-1 transition-transform duration-brutal hover:bg-brutal-green"
+                  >
+                    {tool}
+                  </div>
+                ))}
+              </div>
+            </BrutalCard>
+          </div>
         </div>
       </div>
     </BrutalSection>
@@ -109,3 +131,6 @@ const SkillsSection: React.FC = () => {
 };
 
 export default SkillsSection;
+
+
+// export default SkillsSection;

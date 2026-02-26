@@ -27,7 +27,7 @@ const contactLinks = [
 
 const ContactSection: React.FC = () => {
   return (
-    <BrutalSection id="contact" bgColor="lime">
+    <BrutalSection id="contact" bgColor="green">
       <div className="space-y-12 text-center">
         {/* Section Header */}
         <div className="space-y-6">

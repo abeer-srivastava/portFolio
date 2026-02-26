@@ -1,11 +1,35 @@
 import React from 'react';
 import BrutalSection from '../brutal/BrutalSection';
 import BrutalCard from '../brutal/BrutalCard';
+import { Coffee, GraduationCap, Trophy, Lightbulb } from 'lucide-react';
+
+const Sticker = ({ children, className, rotate = 0, color = 'bg-brutal-white' }: { children: React.ReactNode, className: string, rotate?: number, color?: string }) => (
+  <div 
+    className={`absolute border-3 border-brutal-black shadow-[4px_4px_0_0_#000] p-3 ${color} ${className} flex items-center justify-center transition-transform hover:scale-110 cursor-default hidden lg:flex z-10`}
+    style={{ transform: `rotate(${rotate}deg)` }}
+  >
+    {children}
+  </div>
+);
 
 const AboutSection: React.FC = () => {
   return (
-    <BrutalSection id="about" bgColor="gray">
-      <div className="space-y-12">
+    <BrutalSection id="about" bgColor="gray" className="relative overflow-hidden">
+      {/* Background Stickers */}
+      <Sticker className="top-20 right-[5%]" rotate={12} color="bg-brutal-yellow">
+        <Coffee size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="bottom-40 left-[2%]" rotate={-15} color="bg-brutal-blue">
+        <GraduationCap size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="top-1/2 right-[2%]" rotate={8} color="bg-brutal-pink">
+        <Trophy size={24} strokeWidth={3} />
+      </Sticker>
+      <Sticker className="bottom-[10%] right-[10%]" rotate={-5} color="bg-brutal-green">
+        <Lightbulb size={24} strokeWidth={3} />
+      </Sticker>
+
+      <div className="space-y-12 relative z-20">
         {/* Section Header */}
         <div className="border-5 border-brutal-black bg-brutal-black p-4 inline-block">
           <h2 className="text-brutal-white font-space-grotesk font-bold uppercase">
@@ -51,7 +75,7 @@ const AboutSection: React.FC = () => {
                 </p>
               </div>
 
-              <div className="mt-8 p-4 bg-brutal-lime border-3 border-brutal-black">
+              <div className="mt-8 p-4 bg-brutal-green border-3 border-brutal-black">
                 <p className="font-bold uppercase text-sm md:text-base text-center">
                   I love building systems that feel effortless — even when the engineering isn&apos;t.
                 </p>
@@ -62,7 +86,7 @@ const AboutSection: React.FC = () => {
           {/* Stats & Quick Facts */}
           <div className="space-y-6">
             {/* Stats Callout */}
-            <BrutalCard bgColor="lime" rotate={1} hover={true}>
+            <BrutalCard bgColor="green" rotate={1} hover={true}>
               <h3 className="font-bold text-xl uppercase mb-4">Quick Stats</h3>
               <div className="space-y-3 font-jetbrains-mono">
                 <div className="flex justify-between items-center border-b-2 border-brutal-black pb-2">
