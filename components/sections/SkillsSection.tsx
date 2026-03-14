@@ -1,150 +1,144 @@
+'use client';
+
 import React from 'react';
-import BrutalSection from '../brutal/BrutalSection';
-import BrutalCard from '../brutal/BrutalCard';
-import BrutalTerminal from '../brutal/BrutalTerminal';
-import Sticker from '../brutal/Sticker';
-import { Coffee, GraduationCap, Lightbulb, Trophy } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Code2, Server, Database, Cpu } from 'lucide-react';
 
-interface SkillCategory {
-  title: string;
-  skills: string[];
-  bgColor: 'green' | 'blue' | 'pink' | 'white';
-}
-
-const skillCategories: SkillCategory[] = [
-  {
-    title: 'LANGUAGES',
-    skills: ['C++', 'Python', 'JavaScript', 'TypeScript', 'Java', 'SQL'],
-    bgColor: 'white',
-  },
-  {
-    title: 'FRONTEND',
-    skills: ['React.js', 'Next.js', 'TailwindCSS', 'Framer Motion'],
-    bgColor: 'green',
-  },
-  {
-    title: 'BACKEND',
-    skills: ['Node.js', 'Express.js', 'WebSockets', 'REST APIs'],
-    bgColor: 'blue',
-  },
-  {
-    title: 'CLOUD & DATA',
-    skills: ['AWS', 'GCP', 'IBM Cloud', 'MongoDB', 'PostgreSQL', 'MySQL'],
-    bgColor: 'pink',
-  },
+const cardColors = [
+  { bg: 'bg-brutal-blue', accent: 'bg-brutal-pink' },
+  { bg: 'bg-brutal-pink', accent: 'bg-brutal-yellow' },
+  { bg: 'bg-brutal-green', accent: 'bg-brutal-blue' },
 ];
 
-const SkillsSection: React.FC = () => {
+const SkillCard = ({
+  title,
+  icon: Icon,
+  description,
+  tags,
+  index,
+}: {
+  title: string;
+  icon: React.ElementType;
+  description: string;
+  tags: string[];
+  index: number;
+}) => {
+  const rotations = [-1.5, 1, -0.5];
+  const colors = cardColors[index % cardColors.length];
+
   return (
-    <BrutalSection id="skills" bgColor="white" className="relative overflow-hidden">
-      <Sticker className="bottom-20 left-[5%]" rotate={12} color="bg-brutal-yellow">
-        <GraduationCap size={24} strokeWidth={3} />
-      </Sticker>
-      <Sticker className="top-40 right-[2%]" rotate={-15} color="bg-brutal-blue">
-        <Trophy size={24} strokeWidth={3} />
-      </Sticker>
-      <Sticker className="bottom-1/2 left-[2%]" rotate={8} color="bg-brutal-pink">
-        <Lightbulb size={24} strokeWidth={3} />
-      </Sticker>
-      <Sticker className="top-[70%] right-[10%]" rotate={-5} color="bg-brutal-green">
-        <Coffee size={24} strokeWidth={3} />
-      </Sticker>
-      <div className="space-y-12">
-        {/* Section Header */}
-        <div className="border-5 border-brutal-black bg-brutal-green p-4 inline-block">
-          <h2 className="text-brutal-black font-space-grotesk font-bold uppercase">
-            Technical Skills
-          </h2>
+    <motion.div
+      initial={{ opacity: 0, y: 50, rotate: rotations[index] - 5 }}
+      whileInView={{ opacity: 1, y: 0, rotate: rotations[index] }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, delay: index * 0.12, ease: [0.2, 1, 0.2, 1] as [number, number, number, number] }}
+      whileHover={{ y: -8, rotate: 0 }}
+      className={`${colors.bg} border-[4px] border-brutal-black p-8 shadow-brutal flex flex-col h-full cursor-default transition-shadow duration-150 hover:shadow-brutal-lg`}
+    >
+      <div className="flex items-center gap-4 mb-6">
+        <div className="bg-brutal-black p-3.5 border-[2px] border-brutal-black shadow-brutal-sm">
+          <Icon size={28} strokeWidth={3} className="text-brutal-green" />
+        </div>
+        <h3 className="text-2xl md:text-3xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black uppercase tracking-tighter">
+          {title}
+        </h3>
+      </div>
+
+      <p className="text-brutal-black text-base md:text-lg font-bold leading-snug mb-8">
+        {description}
+      </p>
+
+      <div className="flex flex-wrap gap-2 mt-auto">
+        {tags.map((tag, i) => (
+          <motion.span
+            key={tag}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.12 + i * 0.04 }}
+            className="bg-brutal-black text-brutal-white px-3 py-1.5 font-[var(--font-jetbrains-mono)] font-black text-[11px] uppercase border-[2px] border-brutal-black shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal transition-all duration-150"
+          >
+            {tag}
+          </motion.span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+const SkillsSection = () => {
+  const categories = [
+    {
+      title: 'Languages',
+      icon: Code2,
+      description: 'Building robust, scalable backend services with modern languages and strong typing.',
+      tags: ['Python', 'Node.js', 'Go', 'TypeScript', 'C++', 'SQL'],
+    },
+    {
+      title: 'Infrastructure',
+      icon: Server,
+      description: 'Deploying and scaling cloud-native systems using industry-standard orchestration and automation.',
+      tags: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD', 'GitHub Actions'],
+    },
+    {
+      title: 'Databases',
+      icon: Database,
+      description: 'Designing efficient data architectures for high-performance applications and real-time systems.',
+      tags: ['PostgreSQL', 'MongoDB', 'Redis', 'Elasticsearch', 'DynamoDB'],
+    },
+  ];
+
+  return (
+    <section id="skills" className="py-24 px-6 bg-brutal-yellow brutal-section-border relative overflow-hidden">
+      {/* Dot texture */}
+      <div
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#000 1.5px, transparent 1.5px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 space-y-5">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block"
+          >
+            <div className="inline-flex items-center gap-2 bg-brutal-green text-brutal-black px-6 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
+              <Cpu size={20} strokeWidth={3} />
+              WHAT I WORK WITH
+            </div>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black uppercase tracking-tighter leading-none"
+          >
+            MY{' '}
+            <span className="relative inline-block">
+              <span className="relative z-10">TECH</span>
+              <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-pink m-1" style={{ zIndex: -1 }} />
+            </span>{' '}
+            STACK
+          </motion.h2>
         </div>
 
-        {/* Skills Grid - Asymmetric Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillCategories.map((category, index) => {
-            // Create asymmetric rotation
-            const rotations = [0.5, -1, 1.5, -0.5];
-            const rotation = rotations[index % rotations.length];
-
-            return (
-              <BrutalCard
-                key={category.title}
-                bgColor={category.bgColor}
-                rotate={rotation}
-                className="h-full"
-              >
-                <h3 className="font-bold text-lg md:text-xl uppercase mb-4 pb-3 border-b-3 border-brutal-black">
-                  {category.title}
-                </h3>
-
-                <ul className="space-y-2">
-                  {category.skills.map((skill) => (
-                    <li
-                      key={skill}
-                      className="flex items-center gap-2 font-jetbrains-mono text-sm md:text-base"
-                    >
-                      <span className="w-2 h-2 bg-brutal-black flex-shrink-0" />
-                      <span className="font-bold">{skill}</span>
-                    </li>
-                  ))}
-                </ul>
-              </BrutalCard>
-            );
-          })}
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
-          {/* Terminal Section */}
-          <div className="lg:col-span-2">
-            <BrutalTerminal 
-              commands={[
-                { cmd: "whoami", output: "abeer-srivastava (Full-Stack Engineer)" },
-                { cmd: "ls passions/", output: "scalable-systems/ ai-integration/ clean-code/ performance-opt/" },
-                { cmd: "git commit -m 'build the future'", output: "[main 4f2e8a1] 10 files changed, 452 insertions(+)" }
-              ]}
-            />
-          </div>
-
-          {/* Additional Tools & Technologies */}
-          <div className="h-full">
-            <BrutalCard bgColor="gray" rotate={1} hover={true} className="h-full">
-              <h3 className="font-bold text-xl uppercase mb-4">Core Tools</h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  'Git',
-                  'Docker',
-                  'Vercel',
-                  'Turborepo',
-                  'Prisma',
-                  'Zod',
-                  'Gemini',
-                  'Github',
-                  'Gitlab',
-                  'Postman',
-                  'Figma',
-                  'Framer Motion',
-                  'TailwindCSS',
-                  'WebSockets',
-                  'REST APIs',
-                  'AWS',
-                  'GCP',
-                  'MySQL',
-                ].map((tool) => (
-                  <div
-                    key={tool}
-                    className="px-3 py-1 bg-brutal-white border-2 border-brutal-black font-bold text-xs uppercase hover:-translate-y-1 transition-transform duration-brutal hover:bg-brutal-green"
-                  >
-                    {tool}
-                  </div>
-                ))}
-              </div>
-            </BrutalCard>
-          </div>
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+          {categories.map((category, i) => (
+            <SkillCard key={category.title} {...category} index={i} />
+          ))}
         </div>
       </div>
-    </BrutalSection>
+    </section>
   );
 };
 
 export default SkillsSection;
-
-
-// export default SkillsSection;

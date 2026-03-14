@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
@@ -17,13 +17,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Abeer Srivastava | Full-Stack Developer",
-  description: "Full-Stack Developer building scalable, AI-powered applications. Specializing in cloud-native architectures, real-time systems, and modern web technologies.",
-  keywords: ["Full-Stack Developer", "React", "Next.js", "Node.js", "TypeScript", "Cloud", "AI/ML"],
+  title: "Abeer Srivastava | Backend Engineer",
+  description: "Backend Engineer specializing in distributed systems, REST/GraphQL APIs, and cloud-native infrastructure.",
+  keywords: ["Backend Engineer", "Node.js", "Python", "PostgreSQL", "Docker", "AWS", "Distributed Systems"],
   authors: [{ name: "Abeer Srivastava" }],
   openGraph: {
-    title: "Abeer Srivastava | Full-Stack Developer",
-    description: "Full-Stack Developer building scalable, AI-powered applications",
+    title: "Abeer Srivastava | Backend Engineer",
+    description: "Backend Engineer specializing in distributed systems, REST/GraphQL APIs, and cloud-native infrastructure.",
     type: "website",
   },
 };
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >
         {children}
       </body>

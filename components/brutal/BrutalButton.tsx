@@ -23,18 +23,17 @@ const BrutalButton: React.FC<BrutalButtonProps> = ({
     inline-block px-6 py-3 
     font-bold uppercase text-sm tracking-wide
     border-4 border-brutal-black
-    transition-all duration-brutal ease-brutal
+    transition-all duration-200
     cursor-pointer select-none
     hover:-translate-x-1 hover:-translate-y-1
     active:translate-x-0 active:translate-y-0
     active:shadow-brutal-sm
-    focus-visible:outline-4 focus-visible:outline-brutal-green focus-visible:outline-offset-4
   `;
 
   const variantStyles = {
-    primary: 'bg-brutal-blue text-brutal-black shadow-brutal hover:shadow-brutal-hover',
-    secondary: 'bg-brutal-white text-brutal-black shadow-brutal hover:shadow-brutal-hover',
-    danger: 'bg-brutal-pink text-brutal-white shadow-brutal hover:shadow-brutal-hover',
+    primary: 'bg-brutal-green text-brutal-black shadow-brutal hover:shadow-brutal-lg',
+    secondary: 'bg-brutal-white text-brutal-black shadow-brutal hover:shadow-brutal-lg',
+    danger: 'bg-brutal-pink text-brutal-white shadow-brutal hover:shadow-brutal-lg',
   };
 
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
