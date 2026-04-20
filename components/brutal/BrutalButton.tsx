@@ -2,7 +2,7 @@ import React from 'react';
 
 interface BrutalButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'danger' | 'ghost';
   href?: string;
   onClick?: () => void;
   className?: string;
@@ -20,20 +20,20 @@ const BrutalButton: React.FC<BrutalButtonProps> = ({
   download = false,
 }) => {
   const baseStyles = `
-    inline-block px-6 py-3 
-    font-bold uppercase text-sm tracking-wide
-    border-4 border-brutal-black
+    inline-block px-8 py-4 
+    font-bold uppercase text-sm tracking-widest
+    border-2 border-white
     transition-all duration-200
     cursor-pointer select-none
     hover:-translate-x-1 hover:-translate-y-1
     active:translate-x-0 active:translate-y-0
-    active:shadow-brutal-sm
   `;
 
   const variantStyles = {
-    primary: 'bg-brutal-green text-brutal-black shadow-brutal hover:shadow-brutal-lg',
-    secondary: 'bg-brutal-white text-brutal-black shadow-brutal hover:shadow-brutal-lg',
-    danger: 'bg-brutal-pink text-brutal-white shadow-brutal hover:shadow-brutal-lg',
+    primary: 'bg-accent-violet text-white shadow-[4px_4px_0px_white] hover:bg-[#8B5CF6]',
+    secondary: 'bg-transparent text-white shadow-[4px_4px_0px_white] hover:bg-white/10',
+    danger: 'bg-accent-emerald text-black shadow-[4px_4px_0px_white] hover:bg-[#34D399]',
+    ghost: 'bg-transparent text-white border-white/20 hover:border-white hover:bg-white/5',
   };
 
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;

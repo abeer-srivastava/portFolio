@@ -4,7 +4,7 @@ interface BrutalSectionProps {
   children: React.ReactNode;
   id?: string;
   className?: string;
-  bgColor?: 'white' | 'gray' | 'green' | 'pink' | 'blue' | 'yellow';
+  bgColor?: string;
   noBorder?: boolean;
 }
 
@@ -12,26 +12,17 @@ const BrutalSection: React.FC<BrutalSectionProps> = ({
   children,
   id,
   className = '',
-  bgColor = 'white',
+  bgColor = 'bg-bg-primary',
   noBorder = false,
 }) => {
-  const bgColors = {
-    white: 'bg-brutal-white',
-    gray: 'bg-brutal-gray',
-    green: 'bg-brutal-green',
-    pink: 'bg-brutal-pink',
-    blue: 'bg-brutal-blue',
-    yellow: 'bg-brutal-yellow',
-  };
-
   return (
     <section
       id={id}
       className={`
-        ${bgColors[bgColor]}
-        ${!noBorder ? 'border-b-4 border-brutal-black' : ''}
-        py-20 md:py-24
-        px-4 md:px-6 lg:px-8
+        ${bgColor}
+        ${!noBorder ? 'border-b-2 border-white' : ''}
+        py-24 md:py-32
+        px-6
         ${className}
       `}
     >

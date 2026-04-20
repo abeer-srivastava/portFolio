@@ -1,114 +1,163 @@
 @import "tailwindcss";
 
 @theme {
-  /* Precise Neo-brutalist Palette from Reference */
-  --color-brutal-yellow: #F4D03F;
-  --color-brutal-pink: #FF6B9A;
-  --color-brutal-blue: #6EC1E4;
-  --color-brutal-green: #00E5A0; /* Bright Neon Green */
+  /* Obsidian & Cyber Palette */
+  --color-bg-primary: #050505;
+  --color-bg-secondary: #0F0F0F;
+  --color-bg-card: rgba(15, 15, 15, 0.7);
+  --color-border-primary: #262626;
+  --color-border-active: #FFFFFF;
+  --color-text-primary: #A3A3A3;
+  --color-text-heading: #FFFFFF;
+  --color-accent-violet: #7C3AED;
+  --color-accent-emerald: #10B981;
+  --color-accent-cyan: #06B6D4;
+  --color-dot-pattern: rgba(255, 255, 255, 0.03);
+
+  /* Legacy mapping for components */
+  --color-brutal-yellow: var(--color-accent-emerald);
+  --color-brutal-pink: var(--color-accent-violet);
+  --color-brutal-blue: var(--color-accent-cyan);
+  --color-brutal-green: var(--color-accent-emerald);
   --color-brutal-white: #FFFFFF;
   --color-brutal-black: #000000;
-  --color-brutal-gray: #F5F5F5;
-  --color-brutal-gold: #DDB34B;
+  --color-brutal-bg: var(--color-bg-primary);
 
   /* Fonts */
-  --font-space-grotesk: var(--font-space-grotesk), system-ui, sans-serif;
-  --font-jetbrains-mono: var(--font-jetbrains-mono), monospace;
+  --font-ibm-plex: var(--font-ibm-plex-sans), system-ui, sans-serif;
+  --font-jetbrains: var(--font-jetbrains-mono), monospace;
+  --font-space-mono: var(--font-space-mono), monospace;
 
-  /* Shadows - Hard, solid, no blur */
-  --shadow-brutal: 8px 8px 0px #000000;
-  --shadow-brutal-sm: 4px 4px 0px #000000;
-  --shadow-brutal-lg: 12px 12px 0px #000000;
+  /* Shadows - Refined Bento Hard Shadows */
+  --shadow-bento: 0 0 0 1px var(--color-border-primary), 6px 6px 0px rgba(0, 0, 0, 1);
+  --shadow-bento-hover: 0 0 0 1px var(--color-border-active), 8px 8px 0px var(--color-accent-violet);
+  --shadow-brutal: 4px 4px 0px var(--color-accent-violet);
 }
 
 /* Custom Utilities */
-@utility brutal-card {
-  background-color: var(--color-brutal-white);
-  border: 4px solid var(--color-brutal-black);
-  box-shadow: var(--shadow-brutal);
-}
-
-@utility brutal-hover {
-  transition: all 0.15s ease-in-out;
-  &:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px #000000;
-  }
-  &:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px #000000;
-  }
-}
-
-@utility brutal-dots {
-  background-image: radial-gradient(#000 2.5px, transparent 2.5px);
-  background-size: 24px 24px;
-}
-
-@utility brutal-button {
-  border: 4px solid var(--color-brutal-black);
-  box-shadow: var(--shadow-brutal-sm);
-  transition: all 0.1s ease-in-out;
+@utility bento-card {
+  background-color: var(--color-bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-primary);
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 1);
+  transition: all 0.3s cubic-bezier(0.2, 1, 0.2, 1);
   
   &:hover {
     transform: translate(-2px, -2px);
-    box-shadow: var(--shadow-brutal);
+    border-color: var(--color-border-active);
+    box-shadow: 8px 8px 0px var(--color-accent-violet);
+  }
+}
+
+@utility brutal-button-violet {
+  background-color: var(--color-accent-violet);
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  box-shadow: 4px 4px 0px #000000;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px #000000;
+    background-color: #8B5CF6;
   }
 
   &:active {
-    transform: translate(2px, 2px);
+    transform: translate(1px, 1px);
     box-shadow: none;
   }
 }
 
-@utility brutal-section-border {
-  border-top: 6px solid var(--color-brutal-black);
+@utility bento-grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
 }
 
-/* Blink animation */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-blink {
-  animation: blink 1s step-end infinite;
+@utility brutal-dot-bg {
+  background-image: radial-gradient(circle, var(--color-dot-pattern) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
 }
 
 /* Base Styles */
 :root {
-  --background: var(--color-brutal-yellow);
-  --foreground: var(--color-brutal-black);
+  --background: var(--color-bg-primary);
+  --foreground: var(--color-text-primary);
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-space-grotesk);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-ibm-plex);
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Dot Pattern Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, var(--color-dot-pattern) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Typography */
 h1, h2, h3, h4 {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-space-mono);
   text-transform: uppercase;
-  font-weight: 900;
-  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-text-heading);
 }
 
-h1 { font-size: clamp(3rem, 10vw, 6rem); }
-h2 { font-size: clamp(2.5rem, 8vw, 4rem); }
+/* Custom Cursor */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-accent-violet);
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out, width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.custom-cursor.expanded {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 2px solid #FFFFFF;
+}
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-brutal-black);
+  background: var(--color-bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brutal-white);
-  border: 3px solid var(--color-brutal-black);
+  background: var(--color-accent-violet);
+  border: 2px solid #FFFFFF;
+}
+
+@keyframes music-bar {
+  0%, 100% { height: 4px; }
+  50% { height: 12px; }
+}
+
+@keyframes progress {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }

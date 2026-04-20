@@ -44,43 +44,37 @@ const BrutalNav = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-      className={`fixed top-0 left-0 right-0 z-50 border-b-4 border-brutal-black transition-colors duration-200 ${
-        scrolled ? 'bg-brutal-yellow' : 'bg-brutal-yellow/80 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-white/10 transition-all duration-300 ${
+        scrolled ? 'bg-bg-primary/80 backdrop-blur-xl shadow-2xl' : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-3">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-4">
         <div className="flex items-center justify-between">
 
           {/* Logo */}
           <Link
             href="#home"
-            className="bg-brutal-black text-brutal-green px-4 py-2 border-[3px] border-brutal-black shadow-brutal-sm font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-tighter hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
+            className="font-[var(--font-space-mono)] font-bold text-xl uppercase tracking-tighter flex items-center gap-2 group"
           >
-            <span className="italic">&lt;/&gt;</span> ABEER.DEV
+            <span className="text-accent-violet italic">&lt;/&gt;</span>
+            <span className="text-white group-hover:text-accent-violet transition-colors">ABEER.DEV</span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex gap-3">
+          <div className="hidden md:flex gap-4">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.replace('#', '');
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-5 py-2 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-xs uppercase tracking-widest transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+                  className={`relative px-4 py-1.5 border border-white/10 font-[var(--font-space-mono)] font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:border-accent-violet ${
                     isActive
-                      ? 'bg-brutal-black text-brutal-green shadow-brutal-sm'
-                      : 'bg-brutal-white text-brutal-black shadow-brutal-sm'
+                      ? 'bg-accent-violet text-white border-accent-violet'
+                      : 'bg-transparent text-white/70 hover:text-white'
                   }`}
                 >
                   {item.label}
-                  {isActive && (
-                    <motion.div
-                      layoutId="nav-active"
-                      className="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-3 h-[4px] bg-brutal-green border border-brutal-black"
-                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                    />
-                  )}
                 </Link>
               );
             })}
@@ -89,16 +83,23 @@ const BrutalNav = () => {
           {/* Mobile Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden bg-brutal-white border-[3px] border-brutal-black p-2 shadow-brutal-sm hover:bg-brutal-pink transition-colors active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            className="md:hidden bg-transparent border border-white/10 p-2 text-white hover:border-accent-violet transition-colors"
             aria-label="Toggle menu"
           >
             {isOpen ? (
-              <X size={24} strokeWidth={3} className="text-brutal-black" />
+              <X size={24} strokeWidth={2} />
             ) : (
-              <Menu size={24} strokeWidth={3} className="text-brutal-black" />
+              <Menu size={24} strokeWidth={2} />
             )}
           </button>
         </div>
+
+        {/* Scroll Progress Indicator Line */}
+        <motion.div 
+          className="absolute bottom-0 left-0 h-[1px] bg-accent-violet"
+          style={{ scaleX: scrolled ? 1 : 0, originX: 0 }}
+          transition={{ duration: 0.4 }}
+        />
 
         {/* Mobile Menu — Animated */}
         <AnimatePresence>
@@ -108,23 +109,23 @@ const BrutalNav = () => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.2, ease: 'easeInOut' }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden bg-bg-primary border-t border-white/10 mt-4"
             >
-              <div className="flex flex-col gap-3 pt-4 pb-2">
+              <div className="flex flex-col gap-3 py-6 px-4">
                 {navItems.map((item, i) => (
                   <motion.div
                     key={item.href}
-                    initial={{ x: -30, opacity: 0 }}
+                    initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: i * 0.07 }}
+                    transition={{ delay: i * 0.05 }}
                   >
                     <Link
                       href={item.href}
                       onClick={() => setIsOpen(false)}
-                      className={`block px-5 py-3 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black uppercase text-sm shadow-brutal-sm transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal ${
+                      className={`block px-5 py-3 border border-white/10 font-[var(--font-space-mono)] font-bold uppercase text-sm transition-all duration-200 ${
                         activeSection === item.href.replace('#', '')
-                          ? 'bg-brutal-black text-brutal-green'
-                          : 'bg-brutal-white text-brutal-black'
+                          ? 'bg-accent-violet text-white border-accent-violet'
+                          : 'bg-transparent text-white/70'
                       }`}
                     >
                       {item.label}
