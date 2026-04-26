@@ -11,10 +11,10 @@ const Sticker: React.FC<StickerProps> = ({
   children, 
   className, 
   rotate = 0, 
-  color = 'bg-accent-lime' 
+  color = 'bg-brutal-white' 
 }) => (
   <div 
-    className={`absolute border-2 border-white shadow-[4px_4px_0_0_white] p-3 ${color} text-black font-bold uppercase text-[10px] tracking-widest ${className} flex items-center justify-center transition-all hover:scale-110 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#00E5FF] cursor-default hidden lg:flex z-10`}
+    className={`absolute border-3 border-brutal-black shadow-[4px_4px_0_0_#000] p-3 ${color} ${className} flex items-center justify-center transition-transform hover:scale-110 cursor-default hidden lg:flex z-10`}
     style={{ transform: `rotate(${rotate}deg)` }}
   >
     {children}

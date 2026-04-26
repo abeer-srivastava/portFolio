@@ -12,12 +12,12 @@ const BrutalBadge: React.FC<BrutalBadgeProps> = ({
   className = '',
 }) => {
   const categoryColors = {
-    frontend: 'bg-accent-lime text-black border-white',
-    backend: 'bg-accent-cyan text-black border-white',
-    cloud: 'bg-accent-pink text-white border-white',
-    language: 'bg-white text-black border-white',
-    yellow: 'bg-accent-lime text-black border-white',
-    default: 'bg-bg-secondary text-white border-white',
+    frontend: 'bg-brutal-green text-brutal-black border-brutal-black',
+    backend: 'bg-brutal-blue text-brutal-black border-brutal-black',
+    cloud: 'bg-brutal-pink text-brutal-white border-brutal-black',
+    language: 'bg-brutal-white text-brutal-black border-brutal-black',
+    yellow: 'bg-brutal-yellow text-brutal-black border-brutal-black',
+    default: 'bg-brutal-gray text-brutal-black border-brutal-black',
   };
 
   return (
@@ -27,11 +27,11 @@ const BrutalBadge: React.FC<BrutalBadgeProps> = ({
         px-3 py-1.5
         text-xs md:text-sm
         font-bold uppercase
-        border-2
-        shadow-[3px_3px_0_0_white]
+        border-3
+        shadow-[3px_3px_0_0_#000]
         rotate-[-1deg]
         ${categoryColors[category]}
-        transition-all duration-300
+        transition-all duration-brutal ease-brutal
         hover:-translate-y-1 hover:rotate-0
         ${className}
       `}

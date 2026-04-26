@@ -2,19 +2,21 @@
 
 import React from 'react';
 import BrutalNav from '@/components/brutal/BrutalNav';
-import BentoHero from '@/components/sections/BentoHero';
-import BentoAboutSkills from '@/components/sections/BentoAboutSkills';
-import BentoProjects from '@/components/sections/BentoProjects';
-import BentoContact from '@/components/sections/BentoContact';
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import SkillsSection from '@/components/sections/SkillsSection';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 export default function Home() {
   return (
-    <main className="bg-bg-primary min-h-screen selection:bg-accent-violet selection:text-white">
+    <main className="bg-brutal-bg">
       <BrutalNav />
-      <BentoHero />
-      <BentoAboutSkills />
-      <BentoProjects />
-      <BentoContact />
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ContactSection />
     </main>
   );
 }

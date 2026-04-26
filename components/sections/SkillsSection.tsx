@@ -4,6 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Server, Database, Cpu } from 'lucide-react';
 
+const cardColors = [
+  { bg: 'bg-brutal-blue', accent: 'bg-brutal-pink' },
+  { bg: 'bg-brutal-pink', accent: 'bg-brutal-yellow' },
+  { bg: 'bg-brutal-green', accent: 'bg-brutal-blue' },
+];
+
 const SkillCard = ({
   title,
   icon: Icon,
@@ -17,39 +23,40 @@ const SkillCard = ({
   tags: string[];
   index: number;
 }) => {
+  const rotations = [-1.5, 1, -0.5];
+  const colors = cardColors[index % cardColors.length];
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-      className="bg-bg-secondary border-2 border-white p-8 shadow-[6px_6px_0px_rgba(255,255,255,1)] flex flex-col h-full cursor-default group hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_#C8F135] hover:border-accent-lime transition-all duration-300"
+      initial={{ opacity: 0, y: 50, rotate: rotations[index] - 5 }}
+      whileInView={{ opacity: 1, y: 0, rotate: rotations[index] }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5, delay: index * 0.12, ease: [0.2, 1, 0.2, 1] as [number, number, number, number] }}
+      whileHover={{ y: -8, rotate: 0 }}
+      className={`${colors.bg} border-[4px] border-brutal-black p-8 shadow-brutal flex flex-col h-full cursor-default transition-shadow duration-150 hover:shadow-brutal-lg`}
     >
-      <div className="flex items-center gap-5 mb-8">
-        <div className="bg-accent-lime p-3.5 border-2 border-white shadow-[4px_4px_0px_white] group-hover:rotate-12 transition-transform duration-300">
-          <Icon size={32} strokeWidth={3} className="text-black" />
+      <div className="flex items-center gap-4 mb-6">
+        <div className="bg-brutal-black p-3.5 border-[2px] border-brutal-black shadow-brutal-sm">
+          <Icon size={28} strokeWidth={3} className="text-brutal-green" />
         </div>
-        <div className="relative">
-          <h3 className="text-2xl md:text-3xl font-[var(--font-space-mono)] font-bold text-white uppercase tracking-widest">
-            {title}
-          </h3>
-          <div className="absolute -bottom-1 left-0 w-full h-[3px] bg-accent-lime origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-        </div>
+        <h3 className="text-2xl md:text-3xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black uppercase tracking-tighter">
+          {title}
+        </h3>
       </div>
 
-      <p className="text-text-primary text-base md:text-lg font-medium leading-relaxed mb-10 opacity-80 group-hover:opacity-100 transition-opacity">
+      <p className="text-brutal-black text-base md:text-lg font-bold leading-snug mb-8">
         {description}
       </p>
 
-      <div className="flex flex-wrap gap-3 mt-auto">
+      <div className="flex flex-wrap gap-2 mt-auto">
         {tags.map((tag, i) => (
           <motion.span
             key={tag}
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 + i * 0.05 }}
-            className="bg-transparent text-white px-4 py-2 font-[var(--font-space-mono)] font-bold text-xs uppercase border-2 border-white/20 hover:border-accent-lime hover:bg-accent-lime hover:text-black hover:shadow-[3px_3px_0px_white] transition-all duration-200 cursor-default"
+            transition={{ delay: index * 0.12 + i * 0.04 }}
+            className="bg-brutal-black text-brutal-white px-3 py-1.5 font-[var(--font-jetbrains-mono)] font-black text-[11px] uppercase border-[2px] border-brutal-black shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal transition-all duration-150"
           >
             {tag}
           </motion.span>
@@ -82,20 +89,28 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-32 px-6 bg-bg-primary border-t-2 border-white relative overflow-hidden">
-      
+    <section id="skills" className="py-24 px-6 bg-brutal-yellow brutal-section-border relative overflow-hidden">
+      {/* Dot texture */}
+      <div
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
+        style={{
+          backgroundImage: 'radial-gradient(#000 1.5px, transparent 1.5px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="mb-20 space-y-6">
+        <div className="text-center mb-16 space-y-5">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="inline-block"
           >
-            <div className="inline-flex items-center gap-3 bg-bg-secondary text-accent-lime px-6 py-3 border-2 border-white shadow-[4px_4px_0px_white] font-[var(--font-space-mono)] font-bold text-lg uppercase tracking-widest -rotate-1 hover:rotate-0 transition-all duration-300">
-              <Cpu size={24} strokeWidth={3} />
-              ~/stack.json
+            <div className="inline-flex items-center gap-2 bg-brutal-green text-brutal-black px-6 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
+              <Cpu size={20} strokeWidth={3} />
+              WHAT I WORK WITH
             </div>
           </motion.div>
 
@@ -104,18 +119,19 @@ const SkillsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-[var(--font-space-mono)] font-bold text-white uppercase tracking-tighter leading-none"
+            className="text-5xl md:text-7xl lg:text-8xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black uppercase tracking-tighter leading-none"
           >
             MY{' '}
-            <span className="text-accent-lime">TECH</span>{' '}
+            <span className="relative inline-block">
+              <span className="relative z-10">TECH</span>
+              <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-pink m-1" style={{ zIndex: -1 }} />
+            </span>{' '}
             STACK
           </motion.h2>
-          
-          <div className="w-full h-px bg-white/10 mt-10 border-b border-dashed border-white/20" />
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {categories.map((category, i) => (
             <SkillCard key={category.title} {...category} index={i} />
           ))}

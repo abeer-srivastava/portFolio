@@ -4,7 +4,7 @@ interface BrutalCardProps {
   children: React.ReactNode;
   className?: string;
   rotate?: number; // Rotation in degrees (-2 to 2)
-  bgColor?: string;
+  bgColor?: 'bg-brutal-white' | 'bg-brutal-card' | 'bg-brutal-green' | 'bg-brutal-blue' | 'bg-brutal-bg' | string;
   hover?: boolean; // Enable hover lift effect
   shadowColor?: string;
 }
@@ -13,22 +13,22 @@ const BrutalCard: React.FC<BrutalCardProps> = ({
   children,
   className = '',
   rotate = 0,
-  bgColor = 'bg-bg-secondary',
+  bgColor = 'bg-brutal-card',
   hover = true,
-  shadowColor = 'shadow-[4px_4px_0px_white]',
+  shadowColor = 'shadow-brutal',
 }) => {
   const hoverStyles = hover
-    ? `hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_#C8F135] hover:border-accent-lime`
+    ? `hover:-translate-x-1 hover:-translate-y-1 hover:shadow-brutal-lg`
     : '';
 
   return (
     <div
       className={`
         ${bgColor}
-        border-2 border-white
+        border-4 border-brutal-black
         ${shadowColor}
         p-6 md:p-8
-        transition-all duration-300
+        transition-all duration-200
         ${hoverStyles}
         ${className}
       `}
