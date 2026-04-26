@@ -43,19 +43,19 @@ const FadeUp = ({ children, delay = 0, className = '' }: { children: React.React
 
 const AboutSection = () => {
   const certifications = [
-    { name: 'Oracle OCI AI', provider: 'Oracle', color: 'bg-brutal-green' },
-    { name: 'Cyber Security', provider: 'Tata', color: 'bg-brutal-blue' },
-    { name: 'IBM Data Science', provider: 'IBM', color: 'bg-brutal-pink' },
+    { name: 'Oracle OCI AI', provider: 'Oracle', color: 'bg-brutal-yellow' },
+    { name: 'Cyber Security', provider: 'Tata', color: 'bg-brutal-white' },
+    { name: 'IBM Data Science', provider: 'IBM', color: 'bg-brutal-coral' },
     { name: 'IBM Cloud', provider: 'IBM', color: 'bg-brutal-yellow' },
     { name: 'Google Cloud', provider: 'Google', color: 'bg-brutal-white' },
-    { name: 'Big Data', provider: 'IBM', color: 'bg-brutal-pink' },
+    { name: 'Big Data', provider: 'IBM', color: 'bg-brutal-coral' },
   ];
 
   const stats = [
-    { label: 'Uptime', value: '100%', color: 'bg-brutal-pink', rotate: 3 },
-    { label: 'Projects', value: '12+', color: 'bg-brutal-blue', rotate: -2 },
-    { label: 'GPA', value: '8.6', color: 'bg-brutal-green', rotate: 2 },
-    { label: 'Coffee', value: 'MAX', color: 'bg-brutal-yellow', rotate: -3 },
+    { label: 'Uptime', value: '100%', color: 'bg-brutal-coral', rotate: 3 },
+    { label: 'Projects', value: '12+', color: 'bg-brutal-white', rotate: -2 },
+    { label: 'GPA', value: '8.6', color: 'bg-brutal-yellow', rotate: 2 },
+    { label: 'Coffee', value: 'MAX', color: 'bg-brutal-white', rotate: -3 },
   ];
 
   const focusAreas = [
@@ -67,7 +67,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-24 px-6 bg-brutal-white brutal-section-border relative overflow-hidden">
+    <section id="about" className="py-24 px-6 bg-brutal-bg brutal-section-border relative overflow-hidden">
 
       {/* Background Texture */}
       <div className="absolute inset-0 brutal-dots opacity-[0.06] pointer-events-none" />
@@ -91,11 +91,11 @@ const AboutSection = () => {
                 {/* Terminal header */}
                 <div className="bg-brutal-black px-5 py-3 flex items-center gap-3 border-b-[4px] border-brutal-black">
                   <div className="flex gap-2">
-                    <div className="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border-[2px] border-brutal-black" />
-                    <div className="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border-[2px] border-brutal-black" />
-                    <div className="w-3.5 h-3.5 rounded-full bg-[#27C93F] border-[2px] border-brutal-black" />
+                    <div className="w-3.5 h-3.5 rounded-full bg-brutal-coral border-[2px] border-brutal-black" />
+                    <div className="w-3.5 h-3.5 rounded-full bg-brutal-yellow border-[2px] border-brutal-black" />
+                    <div className="w-3.5 h-3.5 rounded-full bg-brutal-white border-[2px] border-brutal-black" />
                   </div>
-                  <span className="text-brutal-green font-[var(--font-jetbrains-mono)] text-xs font-bold uppercase tracking-wider ml-2">
+                  <span className="text-brutal-white font-[var(--font-jetbrains-mono)] text-xs font-bold uppercase tracking-wider ml-2">
                     ~/abeer/about.md
                   </span>
                 </div>
@@ -103,7 +103,7 @@ const AboutSection = () => {
                 <div className="p-8 md:p-10 space-y-8">
                   {/* Header */}
                   <h2 className="text-4xl md:text-5xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black flex items-center gap-4 uppercase tracking-tighter">
-                    <User size={48} strokeWidth={3} className="text-brutal-pink shrink-0" />
+                    <User size={48} strokeWidth={3} className="text-brutal-coral shrink-0" />
                     WHO I AM
                   </h2>
 
@@ -116,8 +116,8 @@ const AboutSection = () => {
                       </span>
                       , A BACKEND ENGINEER DRIVEN BY THE CHALLENGE OF BUILDING SYSTEMS THAT ARE NOT JUST FUNCTIONAL, BUT{' '}
                       <span className="relative inline-block">
-                        <span className="relative z-10 text-brutal-blue">RESILIENT, SCALABLE, AND ELEGANT.</span>
-                        <span className="absolute -bottom-1 left-0 w-full h-[40%] bg-brutal-pink" style={{ zIndex: -1 }} />
+                        <span className="relative z-10 text-brutal-black">RESILIENT, SCALABLE, AND ELEGANT.</span>
+                        <span className="absolute -bottom-1 left-0 w-full h-[40%] bg-brutal-yellow opacity-50" style={{ zIndex: -1 }} />
                       </span>
                     </p>
                     <p className="text-lg md:text-xl font-medium leading-relaxed opacity-70">
@@ -130,7 +130,7 @@ const AboutSection = () => {
                   {/* Certifications Grid */}
                   <div className="space-y-6 pt-8 border-t-[4px] border-brutal-black">
                     <h3 className="text-2xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black flex items-center gap-3 uppercase tracking-tighter">
-                      <Award className="text-brutal-blue" size={32} strokeWidth={3} />
+                      <Award className="text-brutal-coral" size={32} strokeWidth={3} />
                       CERTIFICATIONS
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -159,15 +159,15 @@ const AboutSection = () => {
                     <FadeUp delay={0.1}>
                       <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                          <GraduationCap className="text-brutal-pink" size={32} strokeWidth={3} />
+                          <GraduationCap className="text-brutal-coral" size={32} strokeWidth={3} />
                           <h4 className="text-xl font-[var(--font-jetbrains-mono)] font-black uppercase text-brutal-black tracking-tighter">
                             EDUCATION
                           </h4>
                         </div>
-                        <div className="bg-brutal-gray border-[4px] border-brutal-black p-5 shadow-brutal -rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
+                        <div className="bg-brutal-white border-[4px] border-brutal-black p-5 shadow-brutal -rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
                           <p className="font-black text-2xl text-brutal-black leading-none">B.TECH – CSE</p>
                           <p className="text-sm font-bold text-brutal-black mt-2">SRMCEM, LUCKNOW</p>
-                          <p className="text-lg font-black text-brutal-blue mt-2">GPA: 8.6 / 10</p>
+                          <p className="text-lg font-black text-brutal-coral mt-2">GPA: 8.6 / 10</p>
                         </div>
                       </div>
                     </FadeUp>
@@ -175,15 +175,15 @@ const AboutSection = () => {
                     <FadeUp delay={0.2}>
                       <div className="space-y-4">
                         <div className="flex items-center gap-3">
-                          <Briefcase className="text-brutal-green" size={32} strokeWidth={3} />
+                          <Briefcase className="text-brutal-yellow" size={32} strokeWidth={3} />
                           <h4 className="text-xl font-[var(--font-jetbrains-mono)] font-black uppercase text-brutal-black tracking-tighter">
                             LEADERSHIP
                           </h4>
                         </div>
-                        <div className="bg-brutal-gray border-[4px] border-brutal-black p-5 shadow-brutal rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
+                        <div className="bg-brutal-white border-[4px] border-brutal-black p-5 shadow-brutal rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
                           <p className="font-black text-2xl text-brutal-black leading-none">TECHNICAL MEMBER</p>
                           <p className="text-sm font-bold text-brutal-black mt-2">CSI SRMCEM</p>
-                          <p className="text-lg font-black text-brutal-pink mt-2">5+ WORKSHOPS</p>
+                          <p className="text-lg font-black text-brutal-yellow mt-2">5+ WORKSHOPS</p>
                         </div>
                       </div>
                     </FadeUp>
@@ -198,7 +198,7 @@ const AboutSection = () => {
             {/* System Stats */}
             <FadeUp delay={0.15}>
               <div className="space-y-5">
-                <div className="inline-block bg-brutal-pink text-brutal-white px-5 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-2 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
+                <div className="inline-block bg-brutal-coral text-brutal-black px-5 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-2 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
                   <Zap size={16} className="inline mr-1 text-black" /> <span className="text-black">STATS</span>
                 </div>
                 <div className="grid grid-cols-2 gap-5">
@@ -211,7 +211,7 @@ const AboutSection = () => {
 
             {/* Focus Areas */}
             <FadeUp delay={0.25}>
-              <div className="bg-brutal-blue border-[4px] border-brutal-black p-7 shadow-brutal-lg -rotate-2 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[16px_16px_0px_#000] transition-all duration-150 cursor-default">
+              <div className="bg-brutal-white border-[4px] border-brutal-black p-7 shadow-brutal-lg -rotate-2 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[16px_16px_0px_#000] transition-all duration-150 cursor-default">
                 <h3 className="text-2xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black uppercase mb-6 tracking-tighter flex items-center gap-3">
                   <Target size={28} strokeWidth={3} />
                   FOCUS AREAS

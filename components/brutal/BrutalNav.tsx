@@ -45,7 +45,7 @@ const BrutalNav = () => {
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 200, damping: 25 }}
       className={`fixed top-0 left-0 right-0 z-50 border-b-4 border-brutal-black transition-colors duration-200 ${
-        scrolled ? 'bg-brutal-yellow' : 'bg-brutal-yellow/80 backdrop-blur-sm'
+        scrolled ? 'bg-brutal-coral' : 'bg-brutal-coral/80 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3">
@@ -54,7 +54,7 @@ const BrutalNav = () => {
           {/* Logo */}
           <Link
             href="#home"
-            className="bg-brutal-black text-brutal-green px-4 py-2 border-[3px] border-brutal-black shadow-brutal-sm font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-tighter hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
+            className="bg-brutal-black text-brutal-white px-4 py-2 border-[3px] border-brutal-black shadow-brutal-sm font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-tighter hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
           >
             <span className="italic">&lt;/&gt;</span> ABEER.DEV
           </Link>
@@ -69,7 +69,7 @@ const BrutalNav = () => {
                   href={item.href}
                   className={`relative px-5 py-2 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-xs uppercase tracking-widest transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
                     isActive
-                      ? 'bg-brutal-black text-brutal-green shadow-brutal-sm'
+                      ? 'bg-brutal-yellow text-brutal-black shadow-brutal-sm'
                       : 'bg-brutal-white text-brutal-black shadow-brutal-sm'
                   }`}
                 >
@@ -77,7 +77,7 @@ const BrutalNav = () => {
                   {isActive && (
                     <motion.div
                       layoutId="nav-active"
-                      className="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-3 h-[4px] bg-brutal-green border border-brutal-black"
+                      className="absolute -bottom-[6px] left-1/2 -translate-x-1/2 w-3 h-[4px] bg-brutal-yellow border border-brutal-black"
                       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                     />
                   )}
@@ -89,7 +89,7 @@ const BrutalNav = () => {
           {/* Mobile Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden bg-brutal-white border-[3px] border-brutal-black p-2 shadow-brutal-sm hover:bg-brutal-pink transition-colors active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+            className="md:hidden bg-brutal-white border-[3px] border-brutal-black p-2 shadow-brutal-sm hover:bg-brutal-yellow transition-colors active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
             aria-label="Toggle menu"
           >
             {isOpen ? (
@@ -123,7 +123,7 @@ const BrutalNav = () => {
                       onClick={() => setIsOpen(false)}
                       className={`block px-5 py-3 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black uppercase text-sm shadow-brutal-sm transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal ${
                         activeSection === item.href.replace('#', '')
-                          ? 'bg-brutal-black text-brutal-green'
+                          ? 'bg-brutal-yellow text-brutal-black'
                           : 'bg-brutal-white text-brutal-black'
                       }`}
                     >

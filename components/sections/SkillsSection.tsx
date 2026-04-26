@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 import { Code2, Server, Database, Cpu } from 'lucide-react';
 
 const cardColors = [
-  { bg: 'bg-brutal-blue', accent: 'bg-brutal-pink' },
-  { bg: 'bg-brutal-pink', accent: 'bg-brutal-yellow' },
-  { bg: 'bg-brutal-green', accent: 'bg-brutal-blue' },
+  { bg: 'bg-brutal-white', accent: 'bg-brutal-coral' },
+  { bg: 'bg-brutal-white', accent: 'bg-brutal-yellow' },
+  { bg: 'bg-brutal-white', accent: 'bg-brutal-coral' },
 ];
 
 const SkillCard = ({
@@ -37,7 +37,7 @@ const SkillCard = ({
     >
       <div className="flex items-center gap-4 mb-6">
         <div className="bg-brutal-black p-3.5 border-[2px] border-brutal-black shadow-brutal-sm">
-          <Icon size={28} strokeWidth={3} className="text-brutal-green" />
+          <Icon size={28} strokeWidth={3} className="text-brutal-yellow" />
         </div>
         <h3 className="text-2xl md:text-3xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black uppercase tracking-tighter">
           {title}
@@ -89,7 +89,7 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 px-6 bg-brutal-yellow brutal-section-border relative overflow-hidden">
+    <section id="skills" className="py-24 px-6 bg-brutal-bg brutal-section-border relative overflow-hidden">
       {/* Dot texture */}
       <div
         className="absolute inset-0 opacity-[0.08] pointer-events-none"
@@ -108,7 +108,7 @@ const SkillsSection = () => {
             viewport={{ once: true }}
             className="inline-block"
           >
-            <div className="inline-flex items-center gap-2 bg-brutal-green text-brutal-black px-6 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
+            <div className="inline-flex items-center gap-2 bg-brutal-yellow text-brutal-black px-6 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
               <Cpu size={20} strokeWidth={3} />
               WHAT I WORK WITH
             </div>
@@ -124,7 +124,7 @@ const SkillsSection = () => {
             MY{' '}
             <span className="relative inline-block">
               <span className="relative z-10">TECH</span>
-              <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-pink m-1" style={{ zIndex: -1 }} />
+              <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-yellow opacity-60 m-1" style={{ zIndex: -1 }} />
             </span>{' '}
             STACK
           </motion.h2>

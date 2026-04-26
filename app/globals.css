@@ -2,14 +2,12 @@
 
 @theme {
   /* Precise Neo-brutalist Palette from Reference */
-  --color-brutal-yellow: #F4D03F;
-  --color-brutal-pink: #FF6B9A;
-  --color-brutal-blue: #6EC1E4;
-  --color-brutal-green: #00E5A0; /* Bright Neon Green */
+  --color-brutal-coral: #FE6E6E;
+  --color-brutal-yellow: #FFDB5E;
+  --color-brutal-bg: #F0F0F0;
   --color-brutal-white: #FFFFFF;
   --color-brutal-black: #000000;
-  --color-brutal-gray: #F5F5F5;
-  --color-brutal-gold: #DDB34B;
+  --color-brutal-gray: #E5E5E5;
 
   /* Fonts */
   --font-space-grotesk: var(--font-space-grotesk), system-ui, sans-serif;
@@ -77,7 +75,7 @@
 
 /* Base Styles */
 :root {
-  --background: var(--color-brutal-yellow);
+  --background: var(--color-brutal-bg);
   --foreground: var(--color-brutal-black);
 }
 

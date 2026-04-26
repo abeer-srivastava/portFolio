@@ -10,22 +10,22 @@ const ContactSection = () => {
       label: 'Email',
       icon: Mail,
       href: 'mailto:abeersrivastava16@gmail.com',
-      color: 'text-brutal-green',
-      hoverBg: 'hover:bg-brutal-green',
+      color: 'text-brutal-coral',
+      hoverBg: 'hover:bg-brutal-coral',
     },
     {
       label: 'LinkedIn',
       icon: Linkedin,
       href: 'https://www.linkedin.com/in/abeer-srivastava-a90797290',
-      color: 'text-brutal-blue',
-      hoverBg: 'hover:bg-brutal-blue',
+      color: 'text-brutal-yellow',
+      hoverBg: 'hover:bg-brutal-yellow',
     },
     {
       label: 'GitHub',
       icon: Github,
       href: 'https://github.com/abeer-srivastava',
-      color: 'text-brutal-pink',
-      hoverBg: 'hover:bg-brutal-pink',
+      color: 'text-brutal-coral',
+      hoverBg: 'hover:bg-brutal-coral',
     },
     {
       label: 'Resume',
@@ -37,7 +37,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 px-6 bg-brutal-yellow brutal-section-border relative overflow-hidden">
+    <section id="contact" className="py-24 px-6 bg-brutal-bg brutal-section-border relative overflow-hidden">
       {/* Background Texture */}
       <div className="absolute inset-0 brutal-dots opacity-[0.06] pointer-events-none" />
 
@@ -53,8 +53,8 @@ const ContactSection = () => {
             className="inline-block"
           >
             <div className="bg-brutal-black border-[4px] border-brutal-black px-5 py-2 shadow-brutal-lg">
-              <span className="text-xs font-[var(--font-jetbrains-mono)] font-black text-brutal-green uppercase tracking-widest flex items-center gap-2">
-                <span className="w-2 h-2 bg-brutal-green rounded-full animate-pulse" />
+              <span className="text-xs font-[var(--font-jetbrains-mono)] font-black text-brutal-yellow uppercase tracking-widest flex items-center gap-2">
+                <span className="w-2 h-2 bg-brutal-yellow rounded-full animate-pulse" />
                 Available for new opportunities
               </span>
             </div>
@@ -68,11 +68,11 @@ const ContactSection = () => {
             className="text-5xl md:text-7xl font-[var(--font-jetbrains-mono)] font-black text-brutal-black uppercase tracking-tighter leading-tight"
           >
             LET&apos;S{' '}
-            <span className="inline-block bg-brutal-pink text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm -rotate-1">
+            <span className="inline-block bg-brutal-coral text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm -rotate-1">
               BUILD
             </span>
             <br />
-            <span className="inline-block bg-brutal-blue text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm rotate-1 mt-2">
+            <span className="inline-block bg-brutal-yellow text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm rotate-1 mt-2">
               SOMETHING
             </span>{' '}
             SCALABLE.
@@ -123,11 +123,11 @@ const ContactSection = () => {
         >
           <a
             href="mailto:abeersrivastava16@gmail.com"
-            className="inline-flex items-center gap-3 bg-brutal-black text-brutal-green px-10 py-5 border-[4px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-150 group"
+            className="inline-flex items-center gap-3 bg-brutal-black text-brutal-white px-10 py-5 border-[4px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all duration-150 group"
           >
-            <Send size={22} strokeWidth={3} />
+            <Send size={22} strokeWidth={3} className="text-brutal-yellow" />
             SEND A MESSAGE
-            <ArrowRight size={22} strokeWidth={3} className="group-hover:translate-x-2 transition-transform" />
+            <ArrowRight size={22} strokeWidth={3} className="group-hover:translate-x-2 transition-transform text-brutal-coral" />
           </a>
         </motion.div>
 
@@ -135,17 +135,17 @@ const ContactSection = () => {
         <div className="pt-16 border-t-[4px] border-brutal-black">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-3 bg-brutal-black px-5 py-2.5 border-[3px] border-brutal-black shadow-brutal-sm">
-              <span className="text-brutal-green font-[var(--font-jetbrains-mono)] font-black text-xl italic">&lt;/&gt;</span>
+              <span className="text-brutal-yellow font-[var(--font-jetbrains-mono)] font-black text-xl italic">&lt;/&gt;</span>
               <span className="text-brutal-white font-[var(--font-jetbrains-mono)] font-bold text-xs uppercase tracking-wider">
                 ABEER.DEV // 2026
               </span>
             </div>
 
             <div className="flex items-center gap-2 text-brutal-black font-[var(--font-jetbrains-mono)] font-black text-[11px] uppercase tracking-wider bg-brutal-white px-4 py-2 border-[3px] border-brutal-black shadow-brutal-sm">
-              BUILT WITH <Coffee size={14} strokeWidth={3} className="text-brutal-pink" /> AND <Heart size={14} strokeWidth={3} className="text-brutal-pink" />
+              BUILT WITH <Coffee size={14} strokeWidth={3} className="text-brutal-coral" /> AND <Heart size={14} strokeWidth={3} className="text-brutal-coral" />
             </div>
 
-            <div className="text-brutal-black font-[var(--font-jetbrains-mono)] font-black text-[10px] uppercase tracking-wider bg-brutal-green px-3 py-1.5 border-[2px] border-brutal-black shadow-brutal-sm flex items-center gap-1.5">
+            <div className="text-brutal-black font-[var(--font-jetbrains-mono)] font-black text-[10px] uppercase tracking-wider bg-brutal-yellow px-3 py-1.5 border-[2px] border-brutal-black shadow-brutal-sm flex items-center gap-1.5">
               <span className="w-2 h-2 bg-brutal-black rounded-full animate-pulse" />
               ALL SYSTEMS OPERATIONAL
             </div>

@@ -39,7 +39,7 @@ const ProjectCard = ({
       className={`${color} border-[4px] border-brutal-black p-7 md:p-8 shadow-brutal flex flex-col h-full hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 relative group`}
     >
       {/* Number badge */}
-      <div className="absolute -top-4 -left-3 bg-brutal-black text-brutal-green w-10 h-10 border-[3px] border-brutal-black flex items-center justify-center font-[var(--font-jetbrains-mono)] font-black text-sm z-10">
+      <div className="absolute -top-4 -left-3 bg-brutal-black text-brutal-yellow w-10 h-10 border-[3px] border-brutal-black flex items-center justify-center font-[var(--font-jetbrains-mono)] font-black text-sm z-10">
         {num}
       </div>
 
@@ -49,7 +49,7 @@ const ProjectCard = ({
         </h3>
         <div className={`px-3 py-1 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-[10px] uppercase shadow-brutal-sm flex items-center gap-1.5 ${
           status === 'live'
-            ? 'bg-brutal-green text-brutal-black'
+            ? 'bg-brutal-yellow text-brutal-black'
             : 'bg-brutal-gray text-brutal-black'
         }`}>
           {status === 'live' && <span className="w-2 h-2 bg-brutal-black rounded-full animate-pulse" />}
@@ -93,7 +93,7 @@ const ProjectCard = ({
             href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-brutal-blue text-brutal-black px-5 py-2.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-xs uppercase shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
+            className="bg-brutal-yellow text-brutal-black px-5 py-2.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-xs uppercase shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
           >
             <ExternalLink size={16} strokeWidth={3} />
             Live Demo
@@ -123,7 +123,7 @@ const ProjectsSection = () => {
       impact: 'Real-time collaboration with zero latency',
       tech: ['Turborepo', 'Next.js', 'WebSockets', 'Node.js', 'PostgreSQL', 'TypeScript'],
       githubUrl: 'https://github.com/abeer-srivastava/pixieDraw',
-      color: 'bg-brutal-pink',
+      color: 'bg-brutal-white',
     },
     {
       title: 'SuperBrain',
@@ -132,7 +132,7 @@ const ProjectsSection = () => {
       impact: 'Transform scattered information into organized knowledge',
       tech: ['React', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Zod'],
       githubUrl: 'https://github.com/abeer-srivastava/superBrain',
-      color: 'bg-brutal-blue',
+      color: 'bg-brutal-white',
     },
     {
       title: 'WavvyChat',
@@ -141,12 +141,12 @@ const ProjectsSection = () => {
       impact: 'Scalable real-time messaging with modern architecture',
       tech: ['Next.js', 'Tailwind', 'Express.js', 'Prisma', 'WebSockets', 'Turborepo'],
       githubUrl: 'https://github.com/abeer-srivastava/pixieDraw',
-      color: 'bg-brutal-green',
+      color: 'bg-brutal-white',
     },
   ];
 
   return (
-    <section id="projects" className="py-24 px-6 bg-brutal-white brutal-section-border relative overflow-hidden">
+    <section id="projects" className="py-24 px-6 bg-brutal-bg brutal-section-border relative overflow-hidden">
       {/* Dot texture */}
       <div className="absolute inset-0 brutal-dots opacity-[0.05] pointer-events-none" />
 
@@ -159,7 +159,7 @@ const ProjectsSection = () => {
             viewport={{ once: true }}
             className="inline-block"
           >
-            <div className="inline-block bg-brutal-pink text-brutal-white px-6 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
+            <div className="inline-block bg-brutal-coral text-brutal-black px-6 py-2 border-[4px] border-brutal-black shadow-brutal font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-widest rotate-1 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal-lg transition-all duration-150 cursor-default">
               MY WORK
             </div>
           </motion.div>
@@ -174,7 +174,7 @@ const ProjectsSection = () => {
             FEATURED{' '}
             <span className="relative inline-block">
               <span className="relative z-10">PROJECTS</span>
-              <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-green m-1" style={{ zIndex: -1 }} />
+              <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-yellow m-1" style={{ zIndex: -1 }} />
             </span>
           </motion.h2>
         </div>

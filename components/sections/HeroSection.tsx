@@ -39,7 +39,7 @@ const MarqueeStrip = () => {
   ];
 
   return (
-    <div className="z-1 w-full border-y-[3px] border-brutal-black bg-brutal-pink overflow-hidden py-2.5 select-none">
+    <div className="z-1 w-full border-y-[3px] border-brutal-black bg-brutal-yellow overflow-hidden py-2.5 select-none">
       <motion.div
         className="flex whitespace-nowrap gap-6"
         animate={{ x: ['0%', '-50%'] }}
@@ -77,7 +77,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col bg-brutal-yellow relative overflow-hidden">
+    <section id="home" className="min-h-screen flex flex-col bg-brutal-coral relative overflow-hidden">
 
       {/* ── Dot pattern background ── */}
       <div className="absolute inset-0 brutal-dots opacity-[0.08] pointer-events-none" />
@@ -97,7 +97,7 @@ const HeroSection = () => {
             {/* Greeting badge */}
             <motion.div variants={itemVariants} className="inline-block">
               <div className="inline-flex items-center gap-2 bg-brutal-white text-brutal-black px-4 py-2 border-[3px] border-brutal-black shadow-brutal-sm font-[var(--font-jetbrains-mono)] text-xs font-black uppercase tracking-wider">
-                <span className="w-2 h-2 bg-brutal-green rounded-full animate-pulse" />
+                <span className="w-2 h-2 bg-brutal-yellow rounded-full animate-pulse" />
                 Available for work
               </div>
             </motion.div>
@@ -108,18 +108,18 @@ const HeroSection = () => {
                 Hey, I&apos;m{' '}
                 <span className="relative inline-block">
                   <span className="relative z-10">Abeer</span>
-                  <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-pink m-1" style={{ zIndex: -1 }} />
+                  <span className="absolute -bottom-1 left-0 w-full h-[20%] bg-brutal-yellow m-1" style={{ zIndex: -1 }} />
                 </span>
                 <br />
                 <span className="block mt-1">
                   I Build{' '}
-                  <span className="inline-block bg-brutal-blue text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm -rotate-1">
+                  <span className="inline-block bg-brutal-white text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm -rotate-1">
                     Things
                   </span>
                 </span>
                 <span className="block mt-1">
                   That{' '}
-                  <span className="inline-block bg-brutal-green text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm rotate-1">
+                  <span className="inline-block bg-brutal-white text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm rotate-1">
                     Scale.
                   </span>
                   {/* <span className="inline-block w-[10px] h-[0.7em] bg-brutal-black ml-3 animate-pulse align-middle" /> */}
@@ -146,14 +146,14 @@ const HeroSection = () => {
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
               <a
                 href="#projects"
-                className="group bg-brutal-green text-brutal-black px-7 py-3.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-sm uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
+                className="group bg-brutal-yellow text-brutal-black px-7 py-3.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-sm uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
               >
                 View My Work
                 <ArrowRight size={18} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#contact"
-                className="bg-brutal-pink text-brutal-black px-7 py-3.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-sm uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
+                className="bg-brutal-white text-brutal-black px-7 py-3.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-sm uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
               >
                 <Download size={18} strokeWidth={3} />
                 Resume
@@ -190,7 +190,7 @@ const HeroSection = () => {
             <div className="relative w-72 h-80 sm:w-80 sm:h-[22rem] md:w-[24rem] md:h-[28rem]">
 
               {/* Offset colored shadow block */}
-              <div className="absolute top-4 left-4 w-full h-full bg-brutal-blue border-[3px] border-brutal-black z-0" />
+              <div className="absolute top-4 left-4 w-full h-full bg-brutal-yellow border-[3px] border-brutal-black z-0" />
 
               {/* Photo frame */}
               <motion.div
@@ -199,7 +199,7 @@ const HeroSection = () => {
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
                 <Image
-                  src="/images/me.jpg"
+                  src="/images/newme.jpg"
                   alt="Abeer Srivastava"
                   fill
                   className="object-cover"
