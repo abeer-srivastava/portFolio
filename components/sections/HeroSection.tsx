@@ -199,7 +199,7 @@ const HeroSection = () => {
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
                 <Image
-                  src="/images/newme.jpg"
+                  src="/images/newme.png"
                   alt="Abeer Srivastava"
                   fill
                   className="object-cover"
