@@ -1,22 +1,73 @@
 @import "tailwindcss";
 
+:root {
+  /* Core Palette */
+  --brutal-bg: #F0F0F0;
+  --brutal-surface: #FFFFFF;
+  --brutal-main: #000000; /* Primary contrast (Black in light, White in dark) */
+  --brutal-reverse: #FFFFFF; /* Reverse contrast (White in light, Black in dark) */
+  --brutal-muted: #E5E5E5;
+  
+  /* Accents */
+  --brutal-coral: #FE6E6E;
+  --brutal-yellow: #FFDB5E;
+  --brutal-blue: #6699FF;
+  --brutal-purple: #C299FF;
+  
+  /* Static Colors (Colors that don't invert) */
+  --system-black: #000000;
+  --system-white: #FFFFFF;
+}
+
+.dark {
+  --brutal-bg: #050505;
+  --brutal-surface: #121212;
+  --brutal-main: #FFFFFF;
+  --brutal-reverse: #000000;
+  --brutal-muted: #222222;
+  
+  /* Neon Accents for Dark Mode */
+  --brutal-coral: #FF4D4D;
+  --brutal-yellow: #FFD700;
+  --brutal-blue: #33CCFF;
+  --brutal-purple: #B366FF;
+}
+
 @theme {
-  /* Precise Neo-brutalist Palette from Reference */
-  --color-brutal-coral: #FE6E6E;
-  --color-brutal-yellow: #FFDB5E;
-  --color-brutal-bg: #F0F0F0;
-  --color-brutal-white: #FFFFFF;
-  --color-brutal-black: #000000;
-  --color-brutal-gray: #E5E5E5;
+  --color-brutal-coral: var(--brutal-coral);
+  --color-brutal-yellow: var(--brutal-yellow);
+  --color-brutal-blue: var(--brutal-blue);
+  --color-brutal-purple: var(--brutal-purple);
+  --color-brutal-bg: var(--brutal-bg);
+  --color-brutal-white: var(--brutal-surface);
+  --color-brutal-black: var(--brutal-main);
+  --color-brutal-reverse: var(--brutal-reverse);
+  --color-brutal-gray: var(--brutal-muted);
+  
+  /* Static System Colors */
+  --color-system-black: var(--system-black);
+  --color-system-white: var(--system-white);
 
   /* Fonts */
   --font-space-grotesk: var(--font-space-grotesk), system-ui, sans-serif;
   --font-jetbrains-mono: var(--font-jetbrains-mono), monospace;
 
   /* Shadows - Hard, solid, no blur */
-  --shadow-brutal: 8px 8px 0px #000000;
-  --shadow-brutal-sm: 4px 4px 0px #000000;
-  --shadow-brutal-lg: 12px 12px 0px #000000;
+  --shadow-brutal: 8px 8px 0px var(--brutal-main);
+  --shadow-brutal-sm: 4px 4px 0px var(--brutal-main);
+  --shadow-brutal-lg: 12px 12px 0px var(--brutal-main);
+}
+
+/* Enhanced Dark Mode CRT Effect */
+.dark body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.15;
 }
 
 /* Custom Utilities */
@@ -30,17 +81,14 @@
   transition: all 0.15s ease-in-out;
   &:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 12px 12px 0px #000000;
-  }
-  &:active {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px #000000;
+    box-shadow: 12px 12px 0px var(--color-brutal-black);
   }
 }
 
 @utility brutal-dots {
-  background-image: radial-gradient(#000 2.5px, transparent 2.5px);
+  background-image: radial-gradient(var(--color-brutal-black) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
+  opacity: 0.1;
 }
 
 @utility brutal-button {
@@ -63,16 +111,6 @@
   border-top: 6px solid var(--color-brutal-black);
 }
 
-/* Blink animation */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-blink {
-  animation: blink 1s step-end infinite;
-}
-
 /* Base Styles */
 :root {
   --background: var(--color-brutal-bg);
@@ -84,80 +122,21 @@ body {
   color: var(--foreground);
   font-family: var(--font-space-grotesk);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Debug Mode Styles - Reimplemented & Optimized */
-.debug-mode {
-  cursor: crosshair !important;
-}
-
+/* Debug Mode Styles */
 .debug-mode::before {
   content: "";
   position: fixed;
   inset: 0;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
+    linear-gradient(to right, var(--color-brutal-black) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-brutal-black) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.03;
   pointer-events: none;
   z-index: 1000;
-}
-
-/* Base structure outlines - Exclude Debug UI */
-.debug-mode *:not(nav, nav *, [class*="EventLog"], [class*="EventLog"] *, [class*="Overlay"], [class*="Overlay"] *) {
-  outline: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Section Labels - Top Right */
-.debug-mode section {
-  position: relative;
-}
-
-.debug-mode section::after {
-  content: "<" attr(id) " />";
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: var(--color-brutal-black);
-  color: var(--color-brutal-yellow);
-  font-family: var(--font-jetbrains-mono);
-  font-size: 9px;
-  padding: 2px 6px;
-  z-index: 1001;
-  font-weight: 900;
-  border-left: 2px solid var(--color-brutal-black);
-  border-bottom: 2px solid var(--color-brutal-black);
-  pointer-events: none;
-  text-transform: uppercase;
-}
-
-/* Interactive Hover Inspection - Exclude Debug UI */
-.debug-mode *:not(nav, nav *, [class*="EventLog"], [class*="EventLog"] *, [class*="Overlay"], [class*="Overlay"] *):hover {
-  outline: 1px solid var(--color-brutal-coral) !important;
-}
-
-/* Simplified Component Label on Hover */
-.debug-mode *:not(nav, nav *, [class*="EventLog"], [class*="EventLog"] *, [class*="Overlay"], [class*="Overlay"] *):hover::before {
-  content: "Node";
-  position: absolute;
-  top: -14px;
-  left: 0;
-  background: var(--color-brutal-coral);
-  color: white;
-  font-family: var(--font-jetbrains-mono);
-  font-size: 7px;
-  font-weight: 800;
-  padding: 0px 4px;
-  white-space: nowrap;
-  z-index: 1005;
-  pointer-events: none;
-}
-
-/* Disable specific transitions in debug mode */
-.debug-mode *, 
-.debug-mode *::before, 
-.debug-mode *::after {
-  transition: outline 0s, background-color 0s !important;
 }
 
 /* Typography */
@@ -177,10 +156,10 @@ h2 { font-size: clamp(2.5rem, 8vw, 4rem); }
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-brutal-black);
+  background: var(--color-system-black);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brutal-white);
-  border: 3px solid var(--color-brutal-black);
+  background: var(--color-brutal-black);
+  border: 3px solid var(--color-system-black);
 }

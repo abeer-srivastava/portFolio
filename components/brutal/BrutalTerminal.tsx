@@ -56,13 +56,13 @@ const InteractiveTerminal = () => {
       onClick={focusInput}
     >
       {/* Terminal header */}
-      <div className="bg-brutal-black px-5 py-3 flex items-center gap-3 border-b-[4px] border-brutal-black shrink-0">
+      <div className="bg-system-black px-5 py-3 flex items-center gap-3 border-b-[4px] border-brutal-black shrink-0">
         <div className="flex gap-2">
-          <div className="w-3.5 h-3.5 rounded-full bg-brutal-coral border-[2px] border-brutal-black" />
-          <div className="w-3.5 h-3.5 rounded-full bg-brutal-yellow border-[2px] border-brutal-black" />
-          <div className="w-3.5 h-3.5 rounded-full bg-brutal-white border-[2px] border-brutal-black" />
+          <div className="w-3.5 h-3.5 rounded-full bg-brutal-coral border-[2px] border-system-black" />
+          <div className="w-3.5 h-3.5 rounded-full bg-brutal-yellow border-[2px] border-system-black" />
+          <div className="w-3.5 h-3.5 rounded-full bg-system-white border-[2px] border-system-black" />
         </div>
-        <span className="text-brutal-white font-[var(--font-jetbrains-mono)] text-xs font-bold uppercase tracking-wider ml-2">
+        <span className="text-system-white font-[var(--font-jetbrains-mono)] text-xs font-bold uppercase tracking-wider ml-2">
           abeer@dev: ~
         </span>
       </div>
@@ -73,7 +73,7 @@ const InteractiveTerminal = () => {
         className="p-6 overflow-y-auto flex-1 font-[var(--font-jetbrains-mono)] text-sm md:text-base text-brutal-black custom-scrollbar"
       >
         {history.map((line, i) => (
-          <div key={i} className={`mb-2 ${line.startsWith('>') ? 'font-black' : 'opacity-80'}`}>
+          <div key={i} className={`mb-2 ${line.startsWith('>') ? 'font-black text-brutal-coral' : 'opacity-90'}`}>
             {line}
           </div>
         ))}
@@ -95,7 +95,11 @@ const InteractiveTerminal = () => {
 
       {/* Suggestion tags at the bottom */}
       <div className="p-3 bg-brutal-gray/30 border-t-[2px] border-brutal-black flex flex-wrap gap-2 shrink-0">
-        {['whoami', 'skills', 'help'].map((cmd) => (
+        {[
+          { cmd: 'whoami', color: 'hover:bg-brutal-coral' },
+          { cmd: 'skills', color: 'hover:bg-brutal-blue' },
+          { cmd: 'help', color: 'hover:bg-brutal-purple' }
+        ].map(({ cmd, color }) => (
           <button
             key={cmd}
             onClick={(e) => {
@@ -103,7 +107,7 @@ const InteractiveTerminal = () => {
               setInput(cmd);
               inputRef.current?.focus();
             }}
-            className="text-[10px] font-black bg-brutal-white border-[2px] border-brutal-black px-2 py-0.5 uppercase hover:bg-brutal-yellow transition-colors"
+            className={`text-[10px] font-black bg-brutal-white border-[2px] border-brutal-black px-3 py-1 uppercase transition-colors ${color}`}
           >
             {cmd}
           </button>

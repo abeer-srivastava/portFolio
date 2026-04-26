@@ -8,6 +8,7 @@ import SkillsSection from '@/components/sections/SkillsSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
 import EventLogFooter from '@/components/brutal/EventLogFooter';
+import DataPipelineBackground from '@/components/brutal/DataPipelineBackground';
 import { useDebug } from '@/components/providers/DebugProvider';
 
 export default function Home() {
@@ -32,7 +33,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-brutal-bg">
+    <main className="bg-brutal-bg relative">
       <BrutalNav />
       <HeroSection />
       <AboutSection />

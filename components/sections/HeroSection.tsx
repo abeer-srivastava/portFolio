@@ -124,13 +124,13 @@ const HeroSection = () => {
                 <br />
                 <span className="block mt-1">
                   I Build{' '}
-                  <span className="inline-block bg-brutal-white text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm -rotate-1">
+                  <span className="inline-block bg-brutal-blue text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm -rotate-1">
                     Things
                   </span>
                 </span>
                 <span className="block mt-1">
                   That{' '}
-                  <span className="inline-block bg-brutal-white text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm rotate-1">
+                  <span className="inline-block bg-brutal-purple text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm rotate-1">
                     Scale.
                   </span>
                 </span>
@@ -170,15 +170,14 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* ─── Right: Profile Photo Card ─── */}
           <motion.div
             variants={itemVariants}
             className="lg:col-span-5 flex justify-center lg:justify-end"
           >
-            <div className="relative w-72 h-80 sm:w-80 sm:h-[22rem] md:w-[24rem] md:h-[28rem]">
+            <div className="relative w-80 h-60 sm:w-96 sm:h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem]">
 
               {/* Offset colored shadow block */}
-              <div className="absolute top-4 left-4 w-full h-full bg-brutal-yellow border-[3px] border-brutal-black z-0" />
+              <div className="absolute top-6 left-6 w-full h-full bg-brutal-yellow border-[4px] border-brutal-black z-0" />
 
               {/* Photo frame */}
               <motion.div
@@ -190,7 +189,7 @@ const HeroSection = () => {
                   src="/images/newme.png"
                   alt="Abeer Srivastava"
                   fill
-                  className="object-cover"
+                  className="object-cover scale-[1.25] translate-y-12 object-bottom"
                   priority
                 />
               </motion.div>
@@ -208,24 +207,24 @@ const HeroSection = () => {
               </motion.div>
 
               {/* ── Floating sticker badges ── */}
-              <StickerBadge className="-top-4 -left-6" rotate={-12} bg="bg-brutal-white" delay={0.5} name="Node.js">
-                <span className="text-brutal-black">Node.js</span>
+              <StickerBadge className="-top-4 -left-6" rotate={-12} bg="bg-brutal-blue" delay={0.5} name="Node.js">
+                <span className="text-brutal-black font-black">Node.js</span>
               </StickerBadge>
 
-              <StickerBadge className="top-16 -right-8" rotate={8} bg="bg-brutal-yellow" delay={0.65} name="Docker">
-                <span className="text-brutal-black">Docker</span>
+              <StickerBadge className="top-16 -right-8" rotate={8} bg="bg-brutal-purple" delay={0.65} name="Docker">
+                <span className="text-brutal-black font-black">Docker</span>
               </StickerBadge>
 
-              <StickerBadge className="bottom-20 -left-10" rotate={15} bg="bg-brutal-white" delay={0.8} name="Python">
-                <span className="text-brutal-black">Python</span>
+              <StickerBadge className="bottom-20 -left-10" rotate={15} bg="bg-brutal-blue" delay={0.8} name="Python">
+                <span className="text-brutal-black font-black">Python</span>
               </StickerBadge>
 
               <StickerBadge className="-bottom-1 -right-6" rotate={-6} bg="bg-brutal-yellow" delay={0.95} name="PostgreSQL">
-                <span className="text-brutal-black">PostgreSQL</span>
+                <span className="text-brutal-black font-black">PostgreSQL</span>
               </StickerBadge>
 
-              <StickerBadge className="top-1/2 -right-12" rotate={-3} bg="bg-brutal-white" delay={1.1} name="AWS">
-                <span className="text-brutal-black">AWS</span>
+              <StickerBadge className="top-1/2 -right-12" rotate={-3} bg="bg-brutal-purple" delay={1.1} name="AWS">
+                <span className="text-brutal-black font-black">AWS</span>
               </StickerBadge>
             </div>
           </motion.div>
