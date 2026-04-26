@@ -1,53 +1,116 @@
-import React from 'react';
+'use client';
 
-interface BrutalTerminalProps {
-  title?: string;
-  commands: { cmd: string; output: string }[];
-  className?: string;
-}
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
-const BrutalTerminal: React.FC<BrutalTerminalProps> = ({
-  title = "terminal.sh",
-  commands,
-  className = "",
-}) => {
+const COMMANDS = {
+  whoami: "Abeer Srivastava - Backend Engineer specializing in distributed systems and cloud-native infrastructure. I turn complex problems into scalable solutions.",
+  skills: "Node.js, Python, Go, TypeScript, AWS, Docker, Kubernetes, PostgreSQL, Redis, GraphQL.",
+  projects: "EchoBox (Secure Messaging), PixieDraw (Collaborative Whiteboard), SuperBrain (Knowledge Hub). Type 'view [project]' for details (coming soon).",
+  contact: "Email: abeersrivastava16@gmail.com | LinkedIn: /in/abeer-srivastava | GitHub: /abeer-srivastava",
+  help: "Available commands: whoami, skills, projects, contact, clear, help",
+  ls: "about.txt  skills.json  projects/  contact.url",
+  clear: "CLEAR",
+};
+
+const InteractiveTerminal = () => {
+  const [history, setHistory] = useState<string[]>(['Type "help" to see available commands.']);
+  const [input, setInput] = useState('');
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [history]);
+
+  const handleCommand = (e: React.FormEvent) => {
+    e.preventDefault();
+    const cmd = input.toLowerCase().trim();
+    
+    if (cmd === '') return;
+
+    let response = '';
+    if (cmd === 'clear') {
+      setHistory([]);
+      setInput('');
+      return;
+    } else if (COMMANDS[cmd as keyof typeof COMMANDS]) {
+      response = COMMANDS[cmd as keyof typeof COMMANDS];
+    } else {
+      response = `Command not found: ${cmd}. Type "help" for a list of commands.`;
+    }
+
+    setHistory([...history, `> ${input}`, response]);
+    setInput('');
+  };
+
+  const focusInput = () => {
+    inputRef.current?.focus();
+  };
+
   return (
-    <div className={`bg-[#1E1E1E] border-4 border-brutal-black shadow-[8px_8px_0_0_#000] overflow-hidden ${className}`}>
-      {/* Mac Header */}
-      <div className="bg-brutal-white border-b-4 border-brutal-black p-3 flex items-center justify-between">
+    <div 
+      className="bg-brutal-white border-[4px] border-brutal-black shadow-brutal-lg relative overflow-hidden flex flex-col h-[600px]"
+      onClick={focusInput}
+    >
+      {/* Terminal header */}
+      <div className="bg-brutal-black px-5 py-3 flex items-center gap-3 border-b-[4px] border-brutal-black shrink-0">
         <div className="flex gap-2">
-          <div className="w-3 h-3 rounded-full bg-[#FF5F56] border-2 border-brutal-black" />
-          <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border-2 border-brutal-black" />
-          <div className="w-3 h-3 rounded-full bg-[#27C93F] border-2 border-brutal-black" />
+          <div className="w-3.5 h-3.5 rounded-full bg-brutal-coral border-[2px] border-brutal-black" />
+          <div className="w-3.5 h-3.5 rounded-full bg-brutal-yellow border-[2px] border-brutal-black" />
+          <div className="w-3.5 h-3.5 rounded-full bg-brutal-white border-[2px] border-brutal-black" />
         </div>
-        <div className="font-jetbrains-mono font-bold text-xs uppercase">
-          {title}
-        </div>
-        <div className="w-12" /> {/* Spacer */}
+        <span className="text-brutal-white font-[var(--font-jetbrains-mono)] text-xs font-bold uppercase tracking-wider ml-2">
+          abeer@dev: ~
+        </span>
       </div>
 
-      {/* Content */}
-      <div className="p-4 md:p-6 font-jetbrains-mono text-sm md:text-base space-y-4">
-        {commands.map((c, i) => (
-          <div key={i} className="space-y-1">
-            <div className="flex gap-2 text-brutal-green">
-              <span className="font-bold">➜</span>
-              <span className="text-brutal-blue font-bold">~</span>
-              <span className="text-brutal-white">{c.cmd}</span>
-            </div>
-            <div className="text-brutal-gray opacity-80 pl-6 leading-relaxed">
-              {c.output}
-            </div>
+      {/* Terminal Body */}
+      <div 
+        ref={scrollRef}
+        className="p-6 overflow-y-auto flex-1 font-[var(--font-jetbrains-mono)] text-sm md:text-base text-brutal-black custom-scrollbar"
+      >
+        {history.map((line, i) => (
+          <div key={i} className={`mb-2 ${line.startsWith('>') ? 'font-black' : 'opacity-80'}`}>
+            {line}
           </div>
         ))}
-        <div className="flex gap-2 text-brutal-green">
-          <span className="font-bold">➜</span>
-          <span className="text-brutal-blue font-bold">~</span>
-          <span className="w-2 h-5 bg-brutal-white animate-pulse" />
-        </div>
+        
+        <form onSubmit={handleCommand} className="flex items-center gap-2 mt-4">
+          <span className="font-black text-brutal-coral">➜</span>
+          <span className="font-black text-brutal-black">~</span>
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="bg-transparent border-none outline-none flex-1 font-black text-brutal-black caret-brutal-coral"
+            autoFocus
+            spellCheck={false}
+          />
+        </form>
+      </div>
+
+      {/* Suggestion tags at the bottom */}
+      <div className="p-3 bg-brutal-gray/30 border-t-[2px] border-brutal-black flex flex-wrap gap-2 shrink-0">
+        {['whoami', 'skills', 'help'].map((cmd) => (
+          <button
+            key={cmd}
+            onClick={(e) => {
+              e.stopPropagation();
+              setInput(cmd);
+              inputRef.current?.focus();
+            }}
+            className="text-[10px] font-black bg-brutal-white border-[2px] border-brutal-black px-2 py-0.5 uppercase hover:bg-brutal-yellow transition-colors"
+          >
+            {cmd}
+          </button>
+        ))}
       </div>
     </div>
   );
 };
 
-export default BrutalTerminal;
+export default InteractiveTerminal;

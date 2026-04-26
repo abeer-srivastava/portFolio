@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github } from 'lucide-react';
+import { Menu, X, Terminal } from 'lucide-react';
+import { useDebug } from '../providers/DebugProvider';
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -13,13 +14,21 @@ const navItems = [
 ];
 
 const BrutalNav = () => {
+  const { isDebugMode, setIsDebugMode, addLog, ping } = useDebug();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [time, setTime] = useState('');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      // Calculate scroll progress
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      setScrollProgress((currentScroll / totalScroll) * 100);
 
       // Detect active section
       const sections = ['contact', 'projects', 'skills', 'about', 'home'];
@@ -39,6 +48,13 @@ const BrutalNav = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString('en-GB', { hour12: false }));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -48,6 +64,9 @@ const BrutalNav = () => {
         scrolled ? 'bg-brutal-white' : 'bg-brutal-white/90 backdrop-blur-sm'
       }`}
     >
+      {/* Scroll Progress Bar */}
+      <div className="absolute top-0 left-0 h-1 bg-brutal-coral z-[60]" style={{ width: `${scrollProgress}%` }} />
+
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3">
         <div className="flex items-center justify-between">
 
@@ -61,27 +80,51 @@ const BrutalNav = () => {
 
           {/* Right Side Items */}
           <div className="flex items-center gap-3">
+            {/* Live Metrics */}
+            <div className="hidden xl:flex items-center gap-3">
+              <div className="flex items-center gap-2 px-3 py-2 border-[3px] border-brutal-black bg-brutal-white font-[var(--font-jetbrains-mono)] text-[10px] font-black uppercase shadow-brutal-sm">
+                <span className="text-brutal-coral">TIME:</span> {time}
+              </div>
+              <div className="flex items-center gap-2 px-3 py-2 border-[3px] border-brutal-black bg-brutal-white font-[var(--font-jetbrains-mono)] text-[10px] font-black uppercase shadow-brutal-sm">
+                <span className="text-brutal-coral">PING:</span> {ping}ms
+              </div>
+            </div>
+
+           
             {/* Desktop Nav Links */}
             <div className="hidden md:flex gap-3">
               {navItems.map((item) => {
                 const isActive = activeSection === item.href.replace('#', '');
                 return (
                   <Link
-                    key={item.href}
-                    href={item.href}
-                    className={`relative px-5 py-2 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-xs uppercase tracking-widest transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
-                      isActive
-                        ? 'bg-brutal-yellow text-brutal-black shadow-brutal-sm'
-                        : 'bg-brutal-white text-brutal-black shadow-brutal-sm'
-                    }`}
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-5 py-2 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-xs uppercase tracking-widest transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+                    isActive
+                    ? 'bg-brutal-yellow text-brutal-black shadow-brutal-sm'
+                    : 'bg-brutal-white text-brutal-black shadow-brutal-sm'
+                  }`}
                   >
                     {item.label}
                   </Link>
                 );
               })}
             </div>
+              {/* Debug Toggle */}
+              <button
+                onClick={() => {
+                const newState = !isDebugMode;
+                setIsDebugMode(newState);
+                addLog(newState ? 'DEBUG: Kernel introspection active.' : 'INFO: Diagnostic session closed.');
+              }}
+              className={`w-10 h-10 border-[3px] border-brutal-black flex items-center justify-center shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 ${
+                isDebugMode ? 'bg-brutal-yellow text-brutal-black' : 'bg-brutal-white text-brutal-black'
+              }`}
+              title="Toggle Debug Mode"
+            >
+              <Terminal size={20} strokeWidth={3} />
+            </button>
 
-          
             {/* Mobile Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -128,22 +171,6 @@ const BrutalNav = () => {
                     </Link>
                   </motion.div>
                 ))}
-                {/* Mobile GitHub link */}
-                <motion.div
-                  initial={{ x: -30, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: navItems.length * 0.07 }}
-                >
-                  <a
-                    href="https://github.com/abeer-srivastava"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-5 py-3 border-[3px] border-brutal-black bg-brutal-white font-[var(--font-jetbrains-mono)] font-black uppercase text-sm shadow-brutal-sm transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal"
-                  >
-                    <Github size={20} strokeWidth={3} />
-                    GitHub
-                  </a>
-                </motion.div>
               </div>
             </motion.div>
           )}

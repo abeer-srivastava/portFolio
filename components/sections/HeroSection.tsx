@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
+import { useDebug } from '../providers/DebugProvider';
 
 /* ───── Sticker Badge ───── */
 const StickerBadge = ({
@@ -12,23 +13,33 @@ const StickerBadge = ({
   rotate = 0,
   bg = 'bg-brutal-yellow',
   delay = 0,
+  name = 'Sticker',
 }: {
   children: React.ReactNode;
   className?: string;
   rotate?: number;
   bg?: string;
   delay?: number;
-}) => (
-  <motion.div
-    initial={{ scale: 0, rotate: rotate - 20 }}
-    animate={{ scale: 1, rotate }}
-    transition={{ type: 'spring', stiffness: 260, damping: 18, delay }}
-    className={`absolute z-30 px-3 py-1.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-bold text-[11px] uppercase tracking-tight shadow-brutal-sm select-none ${bg} ${className}`}
-    style={{ transform: `rotate(${rotate}deg)` }}
-  >
-    {children}
-  </motion.div>
-);
+  name?: string;
+}) => {
+  const { addLog } = useDebug();
+  return (
+    <motion.div
+      drag
+      dragConstraints={{ left: -100, right: 100, top: -100, bottom: 100 }}
+      whileDrag={{ scale: 1.1, zIndex: 50 }}
+      onDragStart={() => addLog(`DEBUG: Input device engaged with "${name}" sticker.`)}
+      onDragEnd={() => addLog(`INFO: "${name}" sticker coordinates updated.`)}
+      initial={{ scale: 0, rotate: rotate - 20 }}
+      animate={{ scale: 1, rotate }}
+      transition={{ type: 'spring', stiffness: 260, damping: 18, delay }}
+      className={`absolute z-30 px-3 py-1.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-bold text-[11px] uppercase tracking-tight shadow-brutal-sm select-none cursor-grab active:cursor-grabbing ${bg} ${className}`}
+      style={{ transform: `rotate(${rotate}deg)` }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 /* ───── Marquee Strip ───── */
 const MarqueeStrip = () => {
@@ -77,7 +88,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex flex-col bg-brutal-coral relative overflow-hidden">
+    <section id="home" className="min-h-screen flex flex-col bg-brutal-bg relative overflow-hidden">
 
       {/* ── Dot pattern background ── */}
       <div className="absolute inset-0 brutal-dots opacity-[0.08] pointer-events-none" />
@@ -122,8 +133,6 @@ const HeroSection = () => {
                   <span className="inline-block bg-brutal-white text-brutal-black px-3 py-1 border-[3px] border-brutal-black shadow-brutal-sm rotate-1">
                     Scale.
                   </span>
-                  {/* <span className="inline-block w-[10px] h-[0.7em] bg-brutal-black ml-3 animate-pulse align-middle" /> */}
-                    
                 </span>
               </h1>
             </motion.div>
@@ -159,27 +168,6 @@ const HeroSection = () => {
                 Resume
               </a>
             </motion.div>
-
-            {/* Social row
-            <motion.div variants={itemVariants} className="flex items-center gap-3 pt-2">
-              {[
-                { icon: Github, href: 'https://github.com/abeer', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com/in/abeer', label: 'LinkedIn' },
-                { icon: Mail, href: 'mailto:hello@abeer.dev', label: 'Email' },
-              ].map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-11 h-11 bg-brutal-white border-[3px] border-brutal-black flex items-center justify-center shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150"
-                >
-                  <Icon size={18} strokeWidth={2.5} />
-                </a>
-              ))}
-             
-            </motion.div> */}
           </div>
 
           {/* ─── Right: Profile Photo Card ─── */}
@@ -220,25 +208,25 @@ const HeroSection = () => {
               </motion.div>
 
               {/* ── Floating sticker badges ── */}
-              {/* <StickerBadge className="-top-4 -left-6" rotate={-12} bg="bg-brutal-white" delay={0.5}>
+              <StickerBadge className="-top-4 -left-6" rotate={-12} bg="bg-brutal-white" delay={0.5} name="Node.js">
                 <span className="text-brutal-black">Node.js</span>
               </StickerBadge>
 
-              <StickerBadge className="top-16 -right-8" rotate={8} bg="bg-brutal-green" delay={0.65}>
+              <StickerBadge className="top-16 -right-8" rotate={8} bg="bg-brutal-yellow" delay={0.65} name="Docker">
                 <span className="text-brutal-black">Docker</span>
               </StickerBadge>
 
-              <StickerBadge className="bottom-20 -left-10" rotate={15} bg="bg-brutal-pink" delay={0.8}>
+              <StickerBadge className="bottom-20 -left-10" rotate={15} bg="bg-brutal-white" delay={0.8} name="Python">
                 <span className="text-brutal-black">Python</span>
               </StickerBadge>
 
-              <StickerBadge className="-bottom-1 -right-6" rotate={-6} bg="bg-brutal-blue" delay={0.95}>
+              <StickerBadge className="-bottom-1 -right-6" rotate={-6} bg="bg-brutal-yellow" delay={0.95} name="PostgreSQL">
                 <span className="text-brutal-black">PostgreSQL</span>
               </StickerBadge>
 
-              <StickerBadge className="top-1/2 -right-12" rotate={-3} bg="bg-brutal-yellow" delay={1.1}>
+              <StickerBadge className="top-1/2 -right-12" rotate={-3} bg="bg-brutal-white" delay={1.1} name="AWS">
                 <span className="text-brutal-black">AWS</span>
-              </StickerBadge> */}
+              </StickerBadge>
             </div>
           </motion.div>
         </motion.div>
