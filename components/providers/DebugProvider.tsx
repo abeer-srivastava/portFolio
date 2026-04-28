@@ -107,7 +107,7 @@ export const DebugProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
       {isDebugMode && <GlitchGridBackground />}
       {isDebugMode && (
-        <div className="fixed inset-0 pointer-events-none z-[9998]">
+        <div className="fixed inset-0 pointer-events-none z-[9998]" style={{ color: 'var(--color-override)' }}>
           <AnimatePresence>
             {alerts.map(alert => (
               <motion.div
@@ -115,7 +115,7 @@ export const DebugProvider = ({ children }: { children: React.ReactNode }) => {
                 initial={{ opacity: 0, scale: 0.5, x: "-50%", y: "-50%" }}
                 animate={{ opacity: [0, 1, 1, 0], scale: [0.8, 1.1, 1, 0.9] }}
                 exit={{ opacity: 0 }}
-                className="absolute bg-brutal-coral text-system-white px-3 py-1 font-black text-[12px] border-2 border-system-black shadow-brutal flex items-center gap-2"
+                className="absolute bg-[var(--color-override)] text-system-black px-3 py-1 font-black text-[12px] border-2 border-system-black shadow-brutal flex items-center gap-2"
                 style={{ left: `${alert.x}%`, top: `${alert.y}%` }}
               >
                 <AlertTriangle size={14} />
@@ -128,10 +128,10 @@ export const DebugProvider = ({ children }: { children: React.ReactNode }) => {
       {isDebugMode && (
         <div className="fixed top-24 left-4 z-[9999] pointer-events-none flex flex-col gap-2 font-[var(--font-jetbrains-mono)]">
           {/* Main HUD */}
-          <div className="bg-system-black text-brutal-coral p-3 border-2 border-brutal-coral shadow-[4px_4px_0px_rgba(254,110,110,0.5)] max-w-[200px]">
-            <div className="font-black border-b border-brutal-coral mb-2 pb-1 flex justify-between items-center text-[11px]">
+          <div className="bg-system-black text-[var(--color-override)] p-3 border-2 border-[var(--color-override)] shadow-[4px_4px_0px_rgba(0,0,0,0.5)] max-w-[200px]">
+            <div className="font-black border-b border-[var(--color-override)] mb-2 pb-1 flex justify-between items-center text-[11px]">
               <span>SYSTEM OVERRIDE</span>
-              <span className="w-2 h-2 bg-brutal-coral animate-pulse rounded-full" />
+              <span className="w-2 h-2 bg-[var(--color-override)] animate-pulse rounded-full" />
             </div>
             
             <div className="space-y-1 text-[10px]">
@@ -139,8 +139,8 @@ export const DebugProvider = ({ children }: { children: React.ReactNode }) => {
                 <span className="opacity-70">CPU LOAD:</span>
                 <span className="font-black">{metrics.cpu}%</span>
               </div>
-              <div className="w-full bg-brutal-coral/20 h-1 mt-0.5">
-                <div className="bg-brutal-coral h-full transition-all duration-500" style={{ width: `${metrics.cpu}%` }} />
+              <div className="w-full bg-[var(--color-override)]/20 h-1 mt-0.5">
+                <div className="bg-[var(--color-override)] h-full transition-all duration-500" style={{ width: `${metrics.cpu}%` }} />
               </div>
 
               <div className="flex justify-between mt-2">
@@ -158,13 +158,13 @@ export const DebugProvider = ({ children }: { children: React.ReactNode }) => {
                 <span className="font-black">{metrics.threads}</span>
               </div>
 
-              <div className="pt-2 border-t border-brutal-coral/30 mt-2">
+              <div className="pt-2 border-t border-[var(--color-override)]/30 mt-2">
                 <div className="flex justify-between text-[8px] mb-1">
                   <span>OVERRIDE STATUS</span>
                   <span className="animate-pulse">{metrics.failureProgress}%</span>
                 </div>
-                <div className="w-full bg-brutal-coral/20 h-2 border border-brutal-coral/50 overflow-hidden">
-                  <div className="bg-brutal-coral h-full transition-all duration-1000 ease-linear" style={{ width: `${metrics.failureProgress}%` }} />
+                <div className="w-full bg-[var(--color-override)]/20 h-2 border border-[var(--color-override)]/50 overflow-hidden">
+                  <div className="bg-[var(--color-override)] h-full transition-all duration-1000 ease-linear" style={{ width: `${metrics.failureProgress}%` }} />
                 </div>
               </div>
             </div>

@@ -62,29 +62,37 @@ const BrutalNav = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-      className={`fixed top-0 left-0 right-0 z-50 border-b-4 border-brutal-black transition-colors duration-200 ${
-        scrolled ? 'bg-brutal-white' : 'bg-brutal-white/90 backdrop-blur-sm'
+      className={`fixed top-0 left-0 right-0 z-50 border-b-4 transition-colors duration-300 ${
+        isDebugMode 
+          ? 'bg-system-black border-[var(--color-override)]' 
+          : scrolled ? 'bg-brutal-white border-brutal-black' : 'bg-brutal-white/90 backdrop-blur-sm border-brutal-black'
       }`}
     >
-      <div className="absolute top-0 left-0 h-1 bg-brutal-coral z-[60]" style={{ width: `${scrollProgress}%` }} />
+      <div className={`absolute top-0 left-0 h-1 z-[60] ${isDebugMode ? 'bg-brutal-yellow' : 'bg-brutal-coral'}`} style={{ width: `${scrollProgress}%` }} />
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-3">
         <div className="flex items-center justify-between">
 
           <Link
             href="#home"
-            className="bg-brutal-white text-brutal-black px-4 py-2 border-[3px] border-brutal-black shadow-brutal-sm font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-tighter hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
+            className={`px-4 py-2 border-[3px] shadow-brutal-sm font-[var(--font-jetbrains-mono)] font-black text-lg uppercase tracking-tighter hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2 ${
+              isDebugMode ? 'bg-system-black border-[var(--color-override)] text-[var(--color-override)]' : 'bg-brutal-white border-brutal-black text-brutal-black'
+            }`}
           >
             ABEER.DEV
           </Link>
 
           <div className="flex items-center gap-3">
             <div className="hidden xl:flex items-center gap-3">
-              <div className="flex items-center gap-2 px-3 py-2 border-[3px] border-brutal-black bg-brutal-white font-[var(--font-jetbrains-mono)] text-[10px] font-black uppercase shadow-brutal-sm">
-                <span className="text-brutal-coral">TIME:</span> {time}
+              <div className={`flex items-center gap-2 px-3 py-2 border-[3px] font-[var(--font-jetbrains-mono)] text-[10px] font-black uppercase shadow-brutal-sm ${
+                isDebugMode ? 'bg-system-black border-[var(--color-override)] text-system-white' : 'bg-brutal-white border-brutal-black text-brutal-black'
+              }`}>
+                <span className={isDebugMode ? 'text-brutal-yellow' : 'text-brutal-coral'}>TIME:</span> {time}
               </div>
-              <div className="flex items-center gap-2 px-3 py-2 border-[3px] border-brutal-black bg-brutal-white font-[var(--font-jetbrains-mono)] text-[10px] font-black uppercase shadow-brutal-sm">
-                <span className="text-brutal-coral">PING:</span> {ping}ms
+              <div className={`flex items-center gap-2 px-3 py-2 border-[3px] font-[var(--font-jetbrains-mono)] text-[10px] font-black uppercase shadow-brutal-sm ${
+                isDebugMode ? 'bg-system-black border-[var(--color-override)] text-system-white' : 'bg-brutal-white border-brutal-black text-brutal-black'
+              }`}>
+                <span className={isDebugMode ? 'text-brutal-yellow' : 'text-brutal-coral'}>PING:</span> {ping}ms
               </div>
             </div>
 
@@ -94,7 +102,9 @@ const BrutalNav = () => {
                 setTheme(newTheme);
                 addLog(`INFO: UI context switched to ${newTheme.toUpperCase()} mode.`);
               }}
-              className="w-10 h-10 border-[3px] border-brutal-black bg-brutal-white text-brutal-black flex items-center justify-center shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150"
+              className={`w-10 h-10 border-[3px] flex items-center justify-center shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 ${
+                isDebugMode ? 'bg-system-black border-[var(--color-override)] text-[var(--color-override)]' : 'bg-brutal-white border-brutal-black text-brutal-black'
+              }`}
               title="Toggle Theme"
             >
               {mounted && theme === 'dark' ? <Sun size={20} strokeWidth={3} /> : <Moon size={20} strokeWidth={3} />}
@@ -106,8 +116,8 @@ const BrutalNav = () => {
                 setIsDebugMode(newState);
                 addLog(newState ? 'CRITICAL: System override initiated.' : 'INFO: Normal operations resumed.');
               }}
-              className={`w-10 h-10 border-[3px] border-brutal-black flex items-center justify-center shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 ${
-                isDebugMode ? 'bg-brutal-coral text-brutal-white' : 'bg-brutal-white text-brutal-black'
+              className={`w-10 h-10 border-[3px] flex items-center justify-center shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 ${
+                isDebugMode ? 'bg-[var(--color-override)] border-[var(--color-override)] text-system-black' : 'bg-brutal-white border-brutal-black text-brutal-black'
               }`}
               title="Toggle System Override"
             >
@@ -121,10 +131,10 @@ const BrutalNav = () => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`relative px-5 py-2 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-xs uppercase tracking-widest transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
-                      isActive
-                        ? 'bg-brutal-yellow text-brutal-black shadow-brutal-sm'
-                        : 'bg-brutal-white text-brutal-black shadow-brutal-sm'
+                    className={`relative px-5 py-2 border-[3px] font-[var(--font-jetbrains-mono)] font-black text-xs uppercase tracking-widest transition-all duration-150 hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none ${
+                      isDebugMode 
+                        ? isActive ? 'bg-[var(--color-override)] border-[var(--color-override)] text-system-black shadow-brutal-sm' : 'bg-system-black border-[var(--color-override)] text-[var(--color-override)] shadow-brutal-sm'
+                        : isActive ? 'bg-brutal-yellow border-brutal-black text-brutal-black shadow-brutal-sm' : 'bg-brutal-white border-brutal-black text-brutal-black shadow-brutal-sm'
                     }`}
                   >
                     {item.label}

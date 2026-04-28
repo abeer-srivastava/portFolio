@@ -30,13 +30,13 @@ const EventLogFooter = () => {
           animate={{ height: isMinimized ? '36px' : '160px' }}
           transition={{ type: 'spring', stiffness: 300, damping: 25 }}
           className={`bg-system-black border-t-[4px] border-x-[4px] shadow-[-8px_0_0_0_rgba(0,0,0,0.5)] w-full md:w-96 ml-auto pointer-events-auto overflow-hidden transition-colors duration-300 ${
-            isDebugMode ? 'border-brutal-coral' : 'border-brutal-black'
+            isDebugMode ? 'border-[var(--color-override)]' : 'border-brutal-black'
           }`}
         >
           {/* Log Header */}
           <div 
             className={`px-3 py-1.5 flex items-center justify-between border-b-[2px] cursor-pointer select-none transition-colors duration-300 ${
-              isDebugMode ? 'bg-brutal-coral border-brutal-coral text-system-white' : 'bg-brutal-yellow border-brutal-black text-system-black'
+              isDebugMode ? 'bg-[var(--color-override)] border-[var(--color-override)] text-system-black' : 'bg-brutal-yellow border-brutal-black text-system-black'
             }`}
             onClick={() => {
               setIsMinimized(!isMinimized);
@@ -47,7 +47,7 @@ const EventLogFooter = () => {
               <Terminal size={12} strokeWidth={3} />
               <span className="text-[10px] font-black uppercase tracking-widest">{isDebugMode ? 'System Override active' : 'Live Events'}</span>
               <span className={`text-[8px] px-1 ml-1 rounded-sm animate-pulse ${
-                isDebugMode ? 'bg-system-white text-brutal-coral' : 'bg-system-black text-system-white'
+                isDebugMode ? 'bg-system-black text-[var(--color-override)]' : 'bg-system-black text-system-white'
               }`}>LIVE</span>
             </div>
             <div className="flex gap-2 items-center">
@@ -67,11 +67,11 @@ const EventLogFooter = () => {
                       initial={{ opacity: 0, x: 10 }}
                       animate={{ opacity: 1, x: 0 }}
                       className={`leading-tight border-l pl-2 ${
-                        isCritical ? 'border-brutal-coral' : 'border-brutal-yellow/30'
+                        isCritical ? 'border-[var(--color-override)]' : 'border-brutal-yellow/30'
                       }`}
                     >
                       <span className={`mr-2 font-black ${
-                        isCritical ? 'text-brutal-coral' : 'text-brutal-yellow'
+                        isCritical ? 'text-[var(--color-override)]' : 'text-brutal-yellow'
                       }`}>{log.split(' ')[0]}</span>
                       {log.split(' ').slice(1).join(' ')}
                     </motion.div>
