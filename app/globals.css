@@ -124,19 +124,74 @@ body {
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+/* System Override Mode Styles */
+.override-mode {
+  cursor: crosshair !important;
+}
 
-/* Debug Mode Styles */
-.debug-mode::before {
+.override-mode img {
+  filter: sepia(100%) hue-rotate(320deg) saturate(300%) contrast(150%) !important;
+  mix-blend-mode: screen;
+}
+
+.override-mode p, .override-mode h1, .override-mode h2, .override-mode h3, .override-mode span {
+  animation: text-jitter 0.2s infinite alternate;
+  text-shadow: 2px 0 0 rgba(255,0,0,0.5), -2px 0 0 rgba(0,255,0,0.5);
+}
+
+@keyframes text-jitter {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(0.5px, 0.5px); }
+  50% { transform: translate(-0.5px, 0.5px); }
+  75% { transform: translate(0.5px, -0.5px); }
+  100% { transform: translate(-0.5px, -0.5px); }
+}
+
+.override-mode::before {
   content: "";
   position: fixed;
   inset: 0;
   background-image: 
-    linear-gradient(to right, var(--color-brutal-black) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-brutal-black) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.03;
+    linear-gradient(to right, var(--color-brutal-coral) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-brutal-coral) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 1000;
+}
+
+.override-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.2) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 4px, 3px 100%;
+  z-index: 9999;
+  pointer-events: none;
+  animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.1; }
+  50% { opacity: 0.12; }
+  100% { opacity: 0.1; }
+}
+
+.override-mode {
+  animation: emergency-pulse 4s infinite ease-in-out;
+}
+
+@keyframes emergency-pulse {
+  0%, 100% { box-shadow: inset 0 0 50px rgba(254, 110, 110, 0.05); }
+  50% { box-shadow: inset 0 0 150px rgba(254, 110, 110, 0.15); }
 }
 
 /* Typography */

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, AlertTriangle } from 'lucide-react';
 import { useDebug } from '../providers/DebugProvider';
 import { useTheme } from 'next-themes';
 
@@ -104,14 +104,14 @@ const BrutalNav = () => {
               onClick={() => {
                 const newState = !isDebugMode;
                 setIsDebugMode(newState);
-                addLog(newState ? 'DEBUG: Kernel introspection active.' : 'INFO: Diagnostic session closed.');
+                addLog(newState ? 'CRITICAL: System override initiated.' : 'INFO: Normal operations resumed.');
               }}
               className={`w-10 h-10 border-[3px] border-brutal-black flex items-center justify-center shadow-brutal-sm hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-brutal active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 ${
-                isDebugMode ? 'bg-brutal-yellow text-brutal-black' : 'bg-brutal-white text-brutal-black'
+                isDebugMode ? 'bg-brutal-coral text-brutal-white' : 'bg-brutal-white text-brutal-black'
               }`}
-              title="Toggle Debug Mode"
+              title="Toggle System Override"
             >
-              <Terminal size={20} strokeWidth={3} />
+              <AlertTriangle size={20} strokeWidth={3} className={isDebugMode ? 'animate-pulse' : ''} />
             </button>
 
             <div className="hidden md:flex gap-3">
