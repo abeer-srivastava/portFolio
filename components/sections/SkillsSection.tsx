@@ -128,8 +128,8 @@ const SkillsSection = () => {
               { name: 'Python', type: 'Expert', isPK: true },
               { name: 'Node.js', type: 'Advanced', isPK: true },
               { name: 'Go', type: 'Intermediate', isFK: true },
-              { name: 'TypeScript', type: 'Advanced' },
-              { name: 'C++', type: 'Academic' },
+              { name: 'TypeScript', type: 'Advanced',isPK:true },
+              { name: 'C++', type: 'Academic',isPK:true },
               { name: 'SQL', type: 'Fluent', isFK: true }
             ]} 
             delay={0.1}
@@ -143,9 +143,9 @@ const SkillsSection = () => {
             fields={[
               { name: 'AWS', type: 'Cloud', isPK: true },
               { name: 'Docker', type: 'Container', isPK: true },
-              { name: 'Kubernetes', type: 'Orchestrator' },
+              { name: 'Kubernetes', type: 'Orchestrator',isPK:true },
               { name: 'Terraform', type: 'IaC', isFK: true },
-              { name: 'CI/CD', type: 'Pipeline' },
+              { name: 'CI/CD', type: 'Pipeline',isPK:true },
               { name: 'Linux', type: 'Kernel', isFK: true }
             ]} 
             delay={0.2}
@@ -159,9 +159,9 @@ const SkillsSection = () => {
             fields={[
               { name: 'PostgreSQL', type: 'Relational', isPK: true },
               { name: 'MongoDB', type: 'NoSQL', isPK: true },
-              { name: 'Redis', type: 'Cache' },
+              { name: 'Redis', type: 'Cache' ,isPK:true},
               { name: 'Elasticsearch', type: 'Search', isFK: true },
-              { name: 'DynamoDB', type: 'Serverless' },
+              { name: 'DynamoDB', type: 'Serverless',isPK:true },
               { name: 'Prisma', type: 'ORM', isFK: true }
             ]} 
             delay={0.3}
@@ -175,9 +175,9 @@ const SkillsSection = () => {
             fields={[
               { name: 'Microservices', type: 'Pattern', isPK: true },
               { name: 'REST APIs', type: 'Standard', isPK: true },
-              { name: 'GraphQL', type: 'Query' },
+              { name: 'GraphQL', type: 'Query',isPK:true },
               { name: 'WebSockets', type: 'Realtime', isFK: true },
-              { name: 'gRPC', type: 'RPC' },
+              { name: 'gRPC', type: 'RPC',isPK:true },
               { name: 'Kafka', type: 'Events', isFK: true }
             ]} 
             delay={0.4}
