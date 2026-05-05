@@ -126,62 +126,111 @@ export const DebugProvider = ({ children }: { children: React.ReactNode }) => {
         </div>
       )}
       {isDebugMode && (
-        <div className="fixed top-24 left-4 z-[9999] pointer-events-none flex flex-col gap-2 font-[var(--font-jetbrains-mono)]">
-          {/* Main HUD */}
-          <div className="bg-system-black text-[var(--color-override)] p-3 border-2 border-[var(--color-override)] shadow-[4px_4px_0px_rgba(0,0,0,0.5)] max-w-[200px]">
-            <div className="font-black border-b border-[var(--color-override)] mb-2 pb-1 flex justify-between items-center text-[11px]">
-              <span>SYSTEM OVERRIDE</span>
-              <span className="w-2 h-2 bg-[var(--color-override)] animate-pulse rounded-full" />
-            </div>
-            
-            <div className="space-y-1 text-[10px]">
-              <div className="flex justify-between">
-                <span className="opacity-70">CPU LOAD:</span>
-                <span className="font-black">{metrics.cpu}%</span>
-              </div>
-              <div className="w-full bg-[var(--color-override)]/20 h-1 mt-0.5">
-                <div className="bg-[var(--color-override)] h-full transition-all duration-500" style={{ width: `${metrics.cpu}%` }} />
-              </div>
-
-              <div className="flex justify-between mt-2">
-                <span className="opacity-70">RAM USE:</span>
-                <span className="font-black">{metrics.ram}GB</span>
+        <>
+          {/* Desktop HUD - Hidden on Mobile */}
+          <div className="fixed top-24 left-4 z-[9999] hidden md:flex flex-col gap-2 font-[var(--font-jetbrains-mono)] pointer-events-auto">
+            {/* Main HUD */}
+            <motion.div 
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              className="bg-system-black text-[var(--color-override)] p-3 border-2 border-[var(--color-override)] shadow-[4px_4px_0px_rgba(0,0,0,0.5)] w-[220px]"
+            >
+              <div className="font-black border-b border-[var(--color-override)] mb-3 pb-1.5 flex justify-between items-center text-[11px]">
+                <span className="tracking-widest">SYSTEM OVERRIDE</span>
+                <span className="w-2.5 h-2.5 bg-[var(--color-override)] animate-pulse rounded-full shadow-[0_0_8px_var(--color-override)]" />
               </div>
               
-              <div className="flex justify-between">
-                <span className="opacity-70">NETWORK:</span>
-                <span className={`font-black ${metrics.net === 'STABLE' ? 'text-green-500' : 'animate-pulse'}`}>{metrics.net}</span>
-              </div>
-
-              <div className="flex justify-between">
-                <span className="opacity-70">THREADS:</span>
-                <span className="font-black">{metrics.threads}</span>
-              </div>
-
-              <div className="pt-2 border-t border-[var(--color-override)]/30 mt-2">
-                <div className="flex justify-between text-[8px] mb-1">
-                  <span>OVERRIDE STATUS</span>
-                  <span className="animate-pulse">{metrics.failureProgress}%</span>
+              <div className="space-y-3 text-[10px]">
+                {/* CPU Row */}
+                <div 
+                  className="cursor-pointer group"
+                  onClick={() => addLog(`INFO: CPU cycle optimization triggered. [LOAD: ${metrics.cpu}%]`)}
+                >
+                  <div className="flex justify-between mb-1">
+                    <span className="opacity-70 group-hover:opacity-100 transition-opacity">CPU LOAD:</span>
+                    <span className="font-black">{metrics.cpu}%</span>
+                  </div>
+                  <div className="w-full bg-[var(--color-override)]/10 h-1.5 border border-[var(--color-override)]/20">
+                    <div className="bg-[var(--color-override)] h-full transition-all duration-500" style={{ width: `${metrics.cpu}%` }} />
+                  </div>
                 </div>
-                <div className="w-full bg-[var(--color-override)]/20 h-2 border border-[var(--color-override)]/50 overflow-hidden">
-                  <div className="bg-[var(--color-override)] h-full transition-all duration-1000 ease-linear" style={{ width: `${metrics.failureProgress}%` }} />
+
+                <div 
+                  className="flex justify-between cursor-help hover:bg-[var(--color-override)]/10 p-1 -m-1 transition-colors"
+                  onClick={() => addLog(`DEBUG: Memory allocation table updated. [${metrics.ram}GB / 16GB]`)}
+                >
+                  <span className="opacity-70">RAM USE:</span>
+                  <span className="font-black">{metrics.ram}GB</span>
+                </div>
+                
+                <div 
+                  className="flex justify-between cursor-help hover:bg-[var(--color-override)]/10 p-1 -m-1 transition-colors"
+                  onClick={() => addLog(`INFO: Network handshake stable. [LATENCY: ${ping}ms]`)}
+                >
+                  <span className="opacity-70">NETWORK:</span>
+                  <span className={`font-black ${metrics.net === 'STABLE' ? 'text-green-500' : 'animate-pulse'}`}>{metrics.net}</span>
+                </div>
+
+                <div 
+                  className="flex justify-between cursor-help hover:bg-[var(--color-override)]/10 p-1 -m-1 transition-colors"
+                  onClick={() => addLog(`DEBUG: Active thread count: ${metrics.threads}.`)}
+                >
+                  <span className="opacity-70">THREADS:</span>
+                  <span className="font-black">{metrics.threads}</span>
+                </div>
+
+                <div className="pt-3 border-t border-[var(--color-override)]/30 mt-3">
+                  <div className="flex justify-between text-[8px] mb-1.5 font-black uppercase">
+                    <span>OVERRIDE STATUS</span>
+                    <span className="animate-pulse">{metrics.failureProgress}%</span>
+                  </div>
+                  <div className="w-full bg-[var(--color-override)]/10 h-3 border-2 border-[var(--color-override)]/40 overflow-hidden relative">
+                    <div className="bg-[var(--color-override)] h-full transition-all duration-1000 ease-linear" style={{ width: `${metrics.failureProgress}%` }} />
+                    {metrics.failureProgress > 0 && (
+                      <div className="absolute inset-0 flex items-center justify-center mix-blend-difference">
+                        <span className="text-[7px] font-black text-white">UPGRADING KERNEL...</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
+
+            {/* Secondary HUD - Coordinates */}
+            <motion.div 
+              initial={{ x: -100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="bg-system-black text-brutal-yellow p-2.5 border-2 border-brutal-yellow shadow-[4px_4px_0px_rgba(255,219,94,0.3)] text-[9px] w-[220px]"
+            >
+              <div className="flex justify-between font-black uppercase mb-1">
+                <span>LOC_X: {mousePos.x}</span>
+                <span>LOC_Y: {mousePos.y}</span>
+              </div>
+              <div className="opacity-60 flex justify-between font-bold">
+                <span>LATENCY: {ping}MS</span>
+                <span>v2.0.4_OVERRIDE</span>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Secondary HUD - Coordinates */}
-          <div className="bg-system-black text-brutal-yellow p-2 border-2 border-brutal-yellow shadow-[4px_4px_0px_rgba(255,219,94,0.5)] text-[9px]">
-            <div className="flex gap-4">
-              <div>LOC_X: {mousePos.x}</div>
-              <div>LOC_Y: {mousePos.y}</div>
+          {/* Mobile Alternative HUD - Top Banner */}
+          <motion.div 
+            initial={{ y: -50 }}
+            animate={{ y: 0 }}
+            className="fixed top-0 left-0 right-0 z-[10000] md:hidden bg-system-black border-b-2 border-[var(--color-override)] px-4 py-2 flex items-center justify-between font-[var(--font-jetbrains-mono)]"
+          >
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 bg-[var(--color-override)] animate-pulse rounded-full" />
+              <span className="text-[10px] font-black text-[var(--color-override)] uppercase tracking-tighter">OVERRIDE ACTIVE</span>
             </div>
-            <div className="mt-1 opacity-50 flex justify-between">
-              <span>LATENCY: {ping}MS</span>
-              <span>v2.0.4_OVERRIDE</span>
+            <div className="flex gap-4 text-[9px] text-system-white font-bold opacity-80">
+              <span>CPU: {metrics.cpu}%</span>
+              <span>RAM: {metrics.ram}GB</span>
+              <span className="text-brutal-yellow">{ping}MS</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </>
       )}
     </DebugContext.Provider>
   );

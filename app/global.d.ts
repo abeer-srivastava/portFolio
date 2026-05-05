@@ -1,1 +1,5 @@
-  declare module '*.css';
+declare module '*.css';
+
+interface Window {
+  toggleMusicSpotlight?: () => void;
+}

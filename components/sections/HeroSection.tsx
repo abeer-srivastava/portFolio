@@ -59,7 +59,7 @@ const MarqueeStrip = () => {
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="font-[var(--font-jetbrains-mono)] font-black text-sm text-brutal-black tracking-wide"
+            className="font-[var(--font-jetbrains-mono)] font-black text-sm text-system-black tracking-wide"
           >
             {item}
           </span>
@@ -71,6 +71,7 @@ const MarqueeStrip = () => {
 
 /* ───── Main Hero ───── */
 const HeroSection = () => {
+  const { addLog } = useDebug();
   const containerVariants = {
     hidden: {},
     visible: {
@@ -94,7 +95,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 brutal-dots opacity-[0.08] pointer-events-none" />
 
       {/* ── Main content ── */}
-      <div className="flex-1 flex items-center justify-center pt-24 pb-12 px-6 relative z-10">
+      <div className="flex-1 flex items-center justify-center pt-32 md:pt-48 pb-12 px-6 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -150,16 +151,16 @@ const HeroSection = () => {
                 </p>
               </div>
             </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
-              <a
-                href="#projects"
-                className="group bg-brutal-yellow text-brutal-black px-7 py-3.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-sm uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
-              >
-                View My Work
-                <ArrowRight size={18} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+{/* CTA Buttons */}
+<motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
+  <a
+    href="#projects"
+    onClick={() => addLog('INFO: Initiating projects handshake.')}
+    className="group bg-brutal-yellow text-system-black px-7 py-3.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-sm uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
+  >
+    View My Work
+    <ArrowRight size={18} strokeWidth={3} className="group-hover:translate-x-1 transition-transform" />
+  </a>
               <a
                 href="#contact"
                 className="bg-brutal-white text-brutal-black px-7 py-3.5 border-[3px] border-brutal-black font-[var(--font-jetbrains-mono)] font-black text-sm uppercase tracking-wider shadow-brutal hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-brutal-lg active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all duration-150 flex items-center gap-2"
@@ -219,7 +220,7 @@ const HeroSection = () => {
                 <span className="text-brutal-black font-black">Python</span>
               </StickerBadge>
 
-              <StickerBadge className="-bottom-1 -right-6" rotate={-6} bg="bg-brutal-yellow" delay={0.95} name="PostgreSQL">
+              <StickerBadge className="-bottom-1 -right-6"  rotate={-6} bg="bg-brutal-yellow" delay={0.95} name="PostgreSQL">
                 <span className="text-brutal-black font-black">PostgreSQL</span>
               </StickerBadge>
 

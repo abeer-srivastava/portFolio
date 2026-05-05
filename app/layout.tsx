@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { DebugProvider } from "@/components/providers/DebugProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import SpotlightMusicPlayer from "@/components/brutal/SpotlightMusicPlayer";
 import "./globals.css";
 
 const inter = Inter({
@@ -48,6 +49,7 @@ export default function RootLayout({
         >
           <DebugProvider>
             {children}
+            <SpotlightMusicPlayer />
           </DebugProvider>
         </ThemeProvider>
       </body>
