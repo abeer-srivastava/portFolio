@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sun, Moon, AlertTriangle, Music, Cpu, Clock } from 'lucide-react';
@@ -22,6 +22,8 @@ const BrutalNav = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [time, setTime] = useState('');
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     setMounted(true);
@@ -29,6 +31,13 @@ const BrutalNav = () => {
       const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
       const currentScroll = window.scrollY;
       setScrollProgress((currentScroll / totalScroll) * 100);
+
+      if (currentScroll > lastScrollY.current && currentScroll > 50) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      lastScrollY.current = currentScroll;
 
       const sections = ['contact', 'projects', 'skills', 'about', 'home'];
       for (const id of sections) {
@@ -59,17 +68,17 @@ const BrutalNav = () => {
     : 'bg-brutal-white border-brutal-black text-brutal-black';
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[100] p-4 md:p-6 pointer-events-none">
-      <div className={`max-w-[1400px] mx-auto border-[4px] shadow-brutal pointer-events-auto transition-all duration-300 flex flex-col md:flex-row items-stretch overflow-hidden ${navBaseClass}`}>
+    <header className={`fixed top-0 left-0 right-0 z-[100] p-4 md:p-6 pointer-events-none transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full md:translate-y-0'}`}>
+      <div className={`max-w-[1400px] w-full mx-auto border-[4px] shadow-brutal pointer-events-auto transition-all duration-300 flex justify-between items-stretch overflow-hidden ${navBaseClass}`}>
         
         {/* Left: Brand & System Meta */}
         <div className="flex items-stretch">
           <Link
             href="#home"
-            className={`px-6 py-3 border-r-[4px] border-brutal-black hover:bg-brutal-yellow transition-colors group flex flex-col items-start justify-center leading-none ${isDebugMode ? 'border-r-[var(--color-override)] hover:bg-[var(--color-override)]/20' : ''} ${activeSection === 'home' ? 'bg-brutal-yellow/20' : ''}`}
+            className={`px-4 md:px-6 py-3 border-r-[4px] border-brutal-black hover:bg-brutal-yellow transition-colors group flex flex-col items-start justify-center leading-none ${isDebugMode ? 'border-r-[var(--color-override)] hover:bg-[var(--color-override)]/20' : ''} ${activeSection === 'home' ? 'bg-brutal-yellow/20' : ''}`}
           >
-            <span className="font-black text-xl uppercase tracking-tighter">Abeer.Dev</span>
-            <span className="text-[7px] font-black uppercase tracking-[0.3em] mt-1 opacity-60">Core_v2.0.7</span>
+            <span className="font-black text-lg md:text-xl uppercase tracking-tighter">Abeer.Dev</span>
+            <span className="text-[6px] md:text-[7px] font-black uppercase tracking-[0.3em] mt-1 opacity-60">Core_v2.0.7</span>
           </Link>
           
           <div className="hidden lg:flex flex-col px-4 font-[var(--font-jetbrains-mono)] text-[9px] font-black uppercase opacity-60 border-r-[4px] border-brutal-black h-full justify-center gap-1">
@@ -124,18 +133,18 @@ const BrutalNav = () => {
              {/* Music Toggle */}
              <button
               onClick={() => window.toggleMusicSpotlight?.()}
-              className="px-4 py-3 border-r-[4px] border-brutal-black hover:bg-brutal-yellow transition-all flex items-center justify-center"
+              className="px-3 md:px-4 py-3 border-r-[4px] border-brutal-black hover:bg-brutal-yellow transition-all flex items-center justify-center"
               title="Toggle Music"
             >
-              <Music size={18} strokeWidth={3} />
+              <Music size={18} strokeWidth={3} className="w-[16px] h-[16px] md:w-[18px] md:h-[18px]" />
             </button>
 
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="px-4 py-3 border-r-[4px] border-brutal-black hover:bg-brutal-yellow transition-all flex items-center justify-center"
+              className="px-3 md:px-4 py-3 border-r-[4px] border-brutal-black hover:bg-brutal-yellow transition-all flex items-center justify-center"
             >
-              {mounted && theme === 'dark' ? <Sun size={18} strokeWidth={3} /> : <Moon size={18} strokeWidth={3} />}
+              {mounted && theme === 'dark' ? <Sun size={18} strokeWidth={3} className="w-[16px] h-[16px] md:w-[18px] md:h-[18px]" /> : <Moon size={18} strokeWidth={3} className="w-[16px] h-[16px] md:w-[18px] md:h-[18px]" />}
             </button>
 
             {/* System Override */}
@@ -145,12 +154,12 @@ const BrutalNav = () => {
                 setIsDebugMode(newState);
                 addLog(newState ? 'CRITICAL: System integrity compromised.' : 'INFO: Integrity restored.');
               }}
-              className={`px-6 py-3 font-black text-xs uppercase transition-all flex items-center justify-center ${
+              className={`px-3 md:px-6 py-3 font-black text-xs uppercase transition-all flex items-center justify-center ${
                 isDebugMode ? 'bg-[var(--color-override)] text-system-black' : 'bg-brutal-coral text-system-white hover:bg-brutal-coral/90'
               }`}
             >
               <div className="flex items-center gap-2">
-                <AlertTriangle size={16} strokeWidth={3} />
+                <AlertTriangle size={16} strokeWidth={3} className="w-[14px] h-[14px] md:w-[16px] md:h-[16px]" />
                 <span className="hidden sm:inline">Override</span>
               </div>
             </button>
@@ -158,9 +167,9 @@ const BrutalNav = () => {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden px-4 py-3 hover:bg-brutal-yellow transition-all flex items-center justify-center"
+              className="md:hidden px-3 py-3 hover:bg-brutal-yellow transition-all flex items-center justify-center"
             >
-              {isOpen ? <X size={20} strokeWidth={3} /> : <Menu size={20} strokeWidth={3} />}
+              {isOpen ? <X size={20} strokeWidth={3} className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]" /> : <Menu size={20} strokeWidth={3} className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]" />}
             </button>
           </div>
         </div>
